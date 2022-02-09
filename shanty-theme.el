@@ -64,7 +64,7 @@ The theme has to be reloaded after changing anything in the faces group."
        (blue-2     "#0683a0")
        (blue-1     "#36a1bb")
        (blue       "#64bfd6")
-       (blue+1     "#0683a0")
+       (blue+1     "#a2dfed")
        (magenta-2  "#690635")
        (magenta-1  "#902b5b")
        (magenta    "#b95f8a")
@@ -82,7 +82,8 @@ The theme has to be reloaded after changing anything in the faces group."
        ;; (bg+1 "#193346")
        ;; (bg+2 "#2B465B")
        ;; (fg "#C4E0F9")
-       (box '(:box (:line-width -1))))
+       (shanty-heading '(:weight bold))
+       (shanty-box '(:box (:line-width -1))))
 
   (custom-theme-set-faces
    'shanty
@@ -99,6 +100,7 @@ The theme has to be reloaded after changing anything in the faces group."
    `(isearch ((t (:background ,magenta+1 :foreground ,bg-2))))
    `(lazy-highlight ((t (:background ,green+2 :foreground ,bg))))
    `(query-replace ((t (:background ,magenta+1 :foreground ,bg-2))))
+   `(highlight ((t (:background ,purple+1 :foreground ,bg-2))))
 
    ;;;; General Programming
    ;; TODO: Not working properly -> mayb rainbow-delimiter
@@ -111,7 +113,7 @@ The theme has to be reloaded after changing anything in the faces group."
    `(font-lock-builtin-face ((t (:foreground ,yellow))))
    `(font-lock-variable-name-face ((t (:foreground ,blue))))
    `(font-lock-constant-face ((t (:foreground ,blue))))
-   `(font-lock-function-name-face ((t (:foreground ,blue ,@box))))
+   `(font-lock-function-name-face ((t (:foreground ,blue ,@shanty-box))))
    `(font-lock-type-face ((t (:foreground ,blue))))
    `(font-lock-string-face ((t (:foreground ,green))))
    `(whitespace-line ((t (:foreground ,orange))))
@@ -119,8 +121,8 @@ The theme has to be reloaded after changing anything in the faces group."
    ;;;; evil-mode
    `(evil-ex-search ((t (:inherit isearch))))
    `(evil-ex-lazy-highlight ((t (:inherit lazy-highlight))))
-   `(evil-ex-substitute-matches ((t (:foreground ,green+1 ,@box))))
-   `(evil-ex-substitute-replacement ((t (:foreground ,red ,@box))))
+   `(evil-ex-substitute-matches ((t (:foreground ,green+1 ,@shanty-box))))
+   `(evil-ex-substitute-replacement ((t (:foreground ,red ,@shanty-box))))
 
    ;;;; dired
    `(dired-header ((t (:foreground ,yellow :slant italic))))
@@ -147,9 +149,67 @@ The theme has to be reloaded after changing anything in the faces group."
 
    ;;;; telephone-line
 
+   ;;;; outline
+   `(outline-1 ((t (:foreground ,yellow ,@shanty-heading))))
+   `(outline-2 ((t (:foreground ,blue ,@shanty-heading))))
+   `(outline-3 ((t (:foreground ,magenta ,@shanty-heading))))
+   `(outline-4 ((t (:foreground ,green ,@shanty-heading))))
+   `(outline-5 ((t (:foreground ,purple+1 ,@shanty-heading))))
+   `(outline-6 ((t (:foreground ,orange+1 ,@shanty-heading))))
+   `(outline-7 ((t (:foreground ,red+1 ,@shanty-heading))))
+   `(outline-8 ((t (:foreground ,blue+1 ,@shanty-heading))))
+   `(outline-9 ((t (:foreground ,magenta+1 ,@shanty-heading))))
+
    ;;;; org-mode
+   `(org-level-1 ((t (:foreground ,yellow ,@shanty-heading))))
+   `(org-level-2 ((t (:foreground ,blue ,@shanty-heading))))
+   `(org-level-3 ((t (:foreground ,magenta ,@shanty-heading))))
+   `(org-level-4 ((t (:foreground ,green ,@shanty-heading))))
+   `(org-level-5 ((t (:foreground ,purple+1 ,@shanty-heading))))
+   `(org-level-6 ((t (:foreground ,orange+1 ,@shanty-heading))))
+   `(org-level-7 ((t (:foreground ,red+1 ,@shanty-heading))))
+   `(org-level-8 ((t (:foreground ,blue+1 ,@shanty-heading))))
+
+   `(org-link ((t (:inherit button))))
+   `(org-list-dt ((t (:weight bold))))
+   `(org-block-begin-line ((t (:background ,bg+1
+                                           :foreground ,fg-1
+                                           :underline (:color ,fg-1) :extend t
+                                           :height 0.80))))
+   `(org-block-end-line ((t (:inherit org-block-begin-line
+                                      :underline nil :overline ,fg-1))))
+   `(org-block ((t (:background ,bg-1))))
+   `(org-quote ((t (:inherit org-block))))
+   `(org-verse ((t (:inherit org-block))))
+   `(org-hide ((t (:foreground ,bg))))
+
+   `(org-code ((t (:background ,bg :foreground ,purple+1))))
+   `(org-verbatim ((t (:inherit org-code))))
+   `(org-drawer ((t (:foreground ,fg-2))))
+   `(org-latex-and-related ((t (:background ,bg-1 ,@shanty-box))))
+
+   `(org-todo ((t (:foreground ,red))))
+   `(org-done ((t (:foreground ,green))))
+   `(org-headline-todo ((t (:foreground ,red))))
+   `(org-headline-done ((t (:foreground ,green))))
+   `(org-warning ((t (:foreground ,orange))))
+   `(org-special-keyword ((t (:foreground ,purple+1 :weight bold))))
+   `(org-tag ((t (:foreground ,magenta))))
+   `(org-tag-group ((t (:foreground ,magenta))))
+   `(org-date ((t (:foreground ,purple+1))))
+   `(org-date-selected ((t (:foreground ,purple))))
+
+   `(org-table ((t (:foreground ,purple+1))))
+   `(org-table-header ((t (:foreground ,purple+1 :weight bold))))
+   `(org-column ((t (:foreground ,purple+1))))
+   `(org-column-title ((t (:foreground ,purple+1 :weight bold))))
+
+   `(org-checkbox ((t (:foreground ,purple+1 :weight bold))))
+   `(org-checkbox-statistics-todo ((t (:foreground ,red :weight bold))))
+   `(org-checkbox-statistics-done ((t (:foreground ,green :weight bold))))
 
    ))
+
 
 ;;;###autoload
 (when load-file-name
