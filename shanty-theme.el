@@ -47,6 +47,7 @@ The theme has to be reloaded after changing anything in the faces group."
        (fg         "#c3c9e9")
        (fg+1       "#bdd3dd")
        (white      "#fefefe")
+       (black      "#000306")
        (yellow-1   "#da7f05")
        (yellow     "#fdaa3a")
        (yellow+1   "#ffc16e")
@@ -101,6 +102,7 @@ The theme has to be reloaded after changing anything in the faces group."
    `(lazy-highlight ((t (:background ,green+2 :foreground ,bg))))
    `(query-replace ((t (:background ,magenta+1 :foreground ,bg-2))))
    `(highlight ((t (:background ,purple+1 :foreground ,bg-2))))
+   `(trailing-whitespace ((t (:background ,red :foreground ,bg-2))))
 
    ;;;; General Programming
    ;; TODO: Not working properly -> mayb rainbow-delimiter
@@ -207,6 +209,82 @@ The theme has to be reloaded after changing anything in the faces group."
    `(org-checkbox ((t (:foreground ,purple+1 :weight bold))))
    `(org-checkbox-statistics-todo ((t (:foreground ,red :weight bold))))
    `(org-checkbox-statistics-done ((t (:foreground ,green :weight bold))))
+
+   ;;;; term-color
+   `(term-color-black ((t (:foreground ,black))))
+   `(term-color-red ((t (:foreground ,red))))
+   `(term-color-green ((t (:foreground ,green))))
+   `(term-color-yellow ((t (:foreground ,yellow))))
+   `(term-color-blue ((t (:foreground ,blue))))
+   `(term-color-magenta ((t (:foreground ,magenta))))
+   `(term-color-cyan ((t (:foreground ,blue+1))))
+   `(term-color-white ((t (:foreground ,white))))
+
+   ;;;; ansi-colors (Have to be set by the user to highlight *shell* buffers)
+   `(ansi-color-black ((t (:foreground ,black))))
+   `(ansi-color-red ((t (:foreground ,red))))
+   `(ansi-color-green ((t (:foreground ,green))))
+   `(ansi-color-yellow ((t (:foreground ,yellow))))
+   `(ansi-color-blue ((t (:foreground ,blue))))
+   `(ansi-color-magenta ((t (:foreground ,magenta))))
+   `(ansi-color-cyan ((t (:foreground ,blue+1))))
+   `(ansi-color-white ((t (:foreground ,white))))
+
+   `(ansi-bright-color-black ((t (:foreground ,black))))
+   `(ansi-bright-color-red ((t (:foreground ,red+1))))
+   `(ansi-bright-color-green ((t (:foreground ,green+1))))
+   `(ansi-bright-color-yellow ((t (:foreground ,yellow+1))))
+   `(ansi-bright-color-blue ((t (:foreground ,blue+1))))
+   `(ansi-bright-color-magenta ((t (:foreground ,magenta+1))))
+   `(ansi-bright-color-cyan ((t (:foreground ,blue+1))))
+   `(ansi-bright-color-white ((t (:foreground ,white))))
+
+   ;;;; avy: works like face, face-0, face-2 (face-1 is not the 3rd column)
+   `(avy-background-face ((t (:background ,bg+1 :foreground ,fg-1 :extend t))))
+   `(avy-lead-face ((t (:background ,magenta :foreground ,bg-1
+                                    ;; ,@shanty-box
+                                    :slant normal :weight bold
+                                    :box nil :underline nil :overline nil))))
+   `(avy-lead-face-0 ((t (:inherit avy-lead-face :background ,purple+1))))
+   `(avy-lead-face-2 ((t (:inherit avy-lead-face :background ,yellow+1))))
+   `(avy-lead-face-1 ((t (:inherit avy-lead-face :background ,red+1))))
+   `(avy-goto-char-timer-face ((t (:inherit avy-lead-face :background ,red))))
+
+   ;;;; company-mode
+   ;; Whole row
+   `(company-tooltip ((t (:background ,bg+2 :foreground ,fg+1))))
+   `(company-tooltip-selection ((t (:background ,bg+1 :foreground ,fg+1 :weight bold))))
+   ;; First part (function/variable name)
+   `(company-tooltip-common ((t (:inherit company-tooltip))))
+   `(company-tooltip-common-selection ((t (:inherit company-tooltip-selection))))
+   ;; Second part (function/variable)
+   `(company-tooltip-annotation ((t (:inherit company-tooltip))))
+   `(company-tooltip-annotation-selection ((t (:inherit company-tooltip-selection))))
+   ;; Special candidates
+   `(company-tooltip-deprecated ((t (:strike-through t))))
+   ;; Scrollbar
+   `(company-tooltip-scrollbar-track ((t (:inherit company-tooltip))))
+   `(company-tooltip-scrollbar-thumb ((t (:background ,fg+1))))
+   ;; Template
+   `(company-template-field ((t (:foreground ,magenta+1))))
+
+   ;;;; flycheck
+   `(flycheck-error ((t (:underline (:color ,red :style wave)))))
+   `(flycheck-warning ((t (:underline (:color ,orange :style wave)))))
+
+   ;;;; magit
+   `(magit-section-heading ((t (:foreground ,yellow))))
+
+   ;;;; lsp-mode / lsp-ui
+   ;; connected etc
+   `(lsp-headerline-breadcrumb-path-face ((t (:foreground ,green))))
+   `(lsp-lsp-flycheck-warning-unnecessary-face ((t (:inherit flycheck-warning))))
+
+   ;;;; rainbow-delimiters
+   `(rainbow-delimiters-base-face ((t (:foreground ,fg))))
+   `(rainbow-delimiters-base-error-face ((t (:background ,red :foreground ,fg :weight bold))))
+   `(rainbow-delimiters-mismatched-face ((t (:background ,red :foreground ,fg :weight bold))))
+   `(rainbow-delimiters-unmatched-face ((t (:background  ,red :foreground ,fg :weight bold))))
 
    ))
 
