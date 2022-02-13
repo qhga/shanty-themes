@@ -172,6 +172,8 @@ The theme has to be reloaded after changing anything in the faces group."
    `(org-level-7 ((t (:foreground ,red+1 ,@shanty-heading))))
    `(org-level-8 ((t (:foreground ,blue+1 ,@shanty-heading))))
 
+   `(org-ellipsis ((t (:inherit t :weight normal))))
+
    `(org-link ((t (:inherit button))))
    `(org-list-dt ((t (:weight bold))))
    `(org-block-begin-line ((t (:background ,bg+1
