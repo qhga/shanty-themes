@@ -109,7 +109,7 @@
      `(font-lock-doc-face ((t (:foreground ,magenta))))
      `(font-lock-keyword-face ((t (:foreground ,yellow :weight bold))))
      `(font-lock-builtin-face ((t (:foreground ,yellow))))
-     `(font-lock-variable-name-face ((t (:foreground ,blue))))
+     `(font-lock-variable-name-face ((t (:foreground ,purple+1))))
      `(font-lock-constant-face ((t (:foreground ,blue))))
      `(font-lock-function-name-face ((t (:foreground ,blue ,@shanty-box))))
      `(font-lock-type-face ((t (:foreground ,blue))))
