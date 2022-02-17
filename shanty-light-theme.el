@@ -33,7 +33,7 @@
           bg+1       "#fbfbfe"
           bg+2       "#fefefe"
           fg-2       "#BBC1DC"
-          fg-1       "#235172"
+          fg-1       "#7d8eae"
           fg         "#122B3F"
           fg+1       "#020e18"
           white      "#0d1f2d"

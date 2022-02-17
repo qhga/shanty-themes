@@ -65,20 +65,12 @@
          (purple     (gethash 'purple    shanty-theme-colors))
          (purple+1   (gethash 'purple+1  shanty-theme-colors))
 
-         ;; MAYB: Alternatives I already tried
-         ;; (magenta+1 "#EF476F")
-         ;; (green "#8BBF9F")
-         ;; (green+1 "#61c9a8")
-         ;; (green+2 "#A2DFED")
-         ;; (bg+1 "#193346")
-         ;; (bg+2 "#2B465B")
-         ;; (fg "#C4E0F9")
          (shanty-heading '(:weight bold))
          (shanty-box '(:box (:line-width -1))))
 
     (defun shanty--li-da(light-color dark-color)
       "Depending on the requested theme returns the appropriate color"
-      (if (eq theme 'shanty-dark) light-color dark-color))
+      (if (eq theme 'shanty-light) light-color dark-color))
 
     (custom-theme-set-faces
      theme
@@ -91,8 +83,8 @@
      `(vertical-border ((t (:foreground ,fg+1 ))))
      `(cursor ((t (:background ,white))))
      ;; TODO: Add support to disable
-     `(hl-line ((t (:background ,(shanty--li-da bg+1 bg+1)))))
-     `(region ((t (:background ,(shanty--li-da bg+2 bg-2)))))
+     `(hl-line ((t (:background ,bg+1))))
+     `(region ((t (:background ,(shanty--li-da bg-2 bg+2)))))
      `(link ((t (:foreground ,green :underline t))))
      ;; `(button ((t (:foreground ,fg :background ,green))))
      `(isearch ((t (:background ,magenta+1 :foreground ,bg-2))))
@@ -110,8 +102,8 @@
      `(show-paren-match ((t (:background ,fg-2))))
      ;; TODO: Not working properly -> mayb rainbow-delimiter
      `(show-paren-mismatch ((t (:background ,red))))
-     `(shadow ((t (:foreground ,fg-2))))
-     `(font-lock-comment-face ((t (:foreground ,fg-2))))
+     `(shadow ((t (:foreground ,(shanty--li-da fg-1 fg-2)))))
+     `(font-lock-comment-face ((t (:inherit shadow))))
      `(font-lock-doc-face ((t (:foreground ,magenta))))
      `(font-lock-keyword-face ((t (:foreground ,yellow :weight bold))))
      `(font-lock-builtin-face ((t (:foreground ,yellow))))
@@ -146,7 +138,7 @@
      `(dired-async-mode-message ((t (:foreground ,yellow))))
 
      ;;;; mode-line
-     `(mode-line ((t (:background ,(shanty--li-da bg-1 bg-2) :foreground ,fg
+     `(mode-line ((t (:background ,(shanty--li-da bg-2 bg-1) :foreground ,fg
                                   :distant-foreground ,fg-2
                                   :overline ,fg-2))))
      `(mode-line-active ((t (:inherit mode-line))))
