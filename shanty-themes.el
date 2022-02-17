@@ -83,8 +83,9 @@
     (custom-theme-set-faces
      theme
 
-   ;;;; Global
+     ;;;; Global
      `(default ((t (:background ,bg :foreground ,fg))))
+     ;; `(bold ((t (:weight bold))))
      ;; TODO: Add support to disable
      `(fringe ((t (:background ,bg+1 ))))
      `(vertical-border ((t (:foreground ,fg+1 ))))
@@ -99,12 +100,17 @@
      `(query-replace ((t (:background ,magenta+1 :foreground ,bg-2))))
      `(highlight ((t (:background ,purple+1 :foreground ,bg-2))))
      `(trailing-whitespace ((t (:background ,red :foreground ,bg-2))))
+     `(completions-common-part ((t (:background ,blue+1 :foreground ,bg :weight bold))))
+     `(success ((t (:foreground ,green :weight bold))))
+     `(error ((t (:foreground ,red :weight bold))))
+     `(diary ((t (:foreground ,yellow))))
 
-   ;;;; General Programming
+     ;;;; General Programming
      ;; TODO: Not working properly -> mayb rainbow-delimiter
      `(show-paren-match ((t (:background ,fg-2))))
      ;; TODO: Not working properly -> mayb rainbow-delimiter
      `(show-paren-mismatch ((t (:background ,red))))
+     `(shadow ((t (:foreground ,fg-2))))
      `(font-lock-comment-face ((t (:foreground ,fg-2))))
      `(font-lock-doc-face ((t (:foreground ,magenta))))
      `(font-lock-keyword-face ((t (:foreground ,yellow :weight bold))))
@@ -114,15 +120,17 @@
      `(font-lock-function-name-face ((t (:foreground ,blue ,@shanty-box))))
      `(font-lock-type-face ((t (:foreground ,blue))))
      `(font-lock-string-face ((t (:foreground ,green))))
+     ;; `(font-negation-char-face ((t (:foreground ,green))))
      `(whitespace-line ((t (:foreground ,orange))))
 
-   ;;;; evil-mode
+     ;;;; evil-mode
      `(evil-ex-search ((t (:inherit isearch))))
      `(evil-ex-lazy-highlight ((t (:inherit lazy-highlight))))
      `(evil-ex-substitute-matches ((t (:foreground ,green+1 ,@shanty-box))))
      `(evil-ex-substitute-replacement ((t (:foreground ,red ,@shanty-box))))
+     `(evil-ex-info ((t (:foreground ,orange))))
 
-   ;;;; dired
+     ;;;; dired
      `(dired-header ((t (:foreground ,yellow :slant italic))))
      `(dired-directory ((t (:foreground ,blue :weight bold))))
      `(dired-symlink ((t (:foreground ,fg-1 :slant italic))))
@@ -133,8 +141,11 @@
      `(dired-ignored ((t (:foreground ,fg-1 :slant italic)))) ;; git ignored files
      `(dired-perm-write ((t (:foreground ,green :weight bold))))
      `(dired-warning ((t (:foreground ,orange :weight bold))))
+     `(dired-async-failures ((t (:foreground ,red :weight bold))))
+     `(dired-async-message ((t (:foreground ,yellow))))
+     `(dired-async-mode-message ((t (:foreground ,yellow))))
 
-   ;;;; mode-line
+     ;;;; mode-line
      `(mode-line ((t (:background ,(shanty--li-da bg-1 bg-2) :foreground ,fg
                                   :distant-foreground ,fg-2
                                   :overline ,fg-2))))
@@ -145,9 +156,9 @@
      `(mode-line-emphasis ((t (:foreground ,yellow :weight bold))))
      `(mode-line-highlight ((t (:foreground ,yellow :weight bold))))
 
-   ;;;; telephone-line
+     ;;;; telephone-line
 
-   ;;;; outline
+     ;;;; outline
      `(outline-1 ((t (:foreground ,yellow ,@shanty-heading))))
      `(outline-2 ((t (:foreground ,blue ,@shanty-heading))))
      `(outline-3 ((t (:foreground ,magenta ,@shanty-heading))))
@@ -158,7 +169,7 @@
      `(outline-8 ((t (:foreground ,blue+1 ,@shanty-heading))))
      `(outline-9 ((t (:foreground ,magenta+1 ,@shanty-heading))))
 
-   ;;;; org-mode
+     ;;;; org-mode
      `(org-level-1 ((t (:foreground ,yellow ,@shanty-heading))))
      `(org-level-2 ((t (:foreground ,blue ,@shanty-heading))))
      `(org-level-3 ((t (:foreground ,magenta ,@shanty-heading))))
@@ -208,7 +219,13 @@
      `(org-checkbox-statistics-todo ((t (:foreground ,red :weight bold))))
      `(org-checkbox-statistics-done ((t (:foreground ,green :weight bold))))
 
-   ;;;; term-color
+     `(org-mode-line-clock ((t (:background ,bg-1 :foreground ,fg :weight bold))))
+     `(org-mode-line-clock-overrun ((t (:background ,red :foreground ,bg :weight bold))))
+
+     ;;;; org-agenda
+     `(org-agenda-done ((t (:foreground ,green :weight bold))))
+
+     ;;;; term-color
      `(term-color-black ((t (:foreground ,black))))
      `(term-color-red ((t (:foreground ,red))))
      `(term-color-green ((t (:foreground ,green))))
@@ -218,7 +235,7 @@
      `(term-color-cyan ((t (:foreground ,blue+1))))
      `(term-color-white ((t (:foreground ,white))))
 
-   ;;;; ansi-colors (Have to be set by the user to highlight *shell* buffers)
+     ;;;; ansi-colors (Have to be set by the user to highlight *shell* buffers)
      `(ansi-color-black ((t (:foreground ,black))))
      `(ansi-color-red ((t (:foreground ,red))))
      `(ansi-color-green ((t (:foreground ,green))))
@@ -237,7 +254,7 @@
      `(ansi-bright-color-cyan ((t (:foreground ,blue+1))))
      `(ansi-bright-color-white ((t (:foreground ,white))))
 
-   ;;;; avy: works like face, face-0, face-2 (face-1 is not the 3rd column)
+     ;;;; avy: works like face, face-0, face-2 (face-1 is not the 3rd column)
      `(avy-background-face ((t (:background ,bg+1 :foreground ,fg-1 :extend t))))
      `(avy-lead-face ((t (:background ,magenta :foreground ,bg-1
                                       ;; ,@shanty-box
@@ -248,7 +265,7 @@
      `(avy-lead-face-1 ((t (:inherit avy-lead-face :background ,red+1))))
      `(avy-goto-char-timer-face ((t (:inherit avy-lead-face :background ,red))))
 
-   ;;;; company-mode
+     ;;;; company-mode
      ;; Whole row
      `(company-tooltip ((t (:background ,bg+2 :foreground ,fg+1))))
      `(company-tooltip-selection ((t (:background ,bg+1 :foreground ,fg+1 :weight bold))))
@@ -266,14 +283,14 @@
      ;; Template
      `(company-template-field ((t (:foreground ,magenta+1))))
 
-   ;;;; flycheck
+     ;;;; flycheck
      `(flycheck-error ((t (:underline (:color ,red :style wave)))))
      `(flycheck-warning ((t (:underline (:color ,orange :style wave)))))
 
-   ;;;; magit
+     ;;;; magit
      `(magit-section-heading ((t (:foreground ,yellow))))
 
-   ;;;; lsp-mode / lsp-ui
+     ;;;; lsp-mode / lsp-ui
      `(header-line ((t (:foreground ,fg :background ,bg-1))))
      `(lsp-headerline-breadcrumb-path-face ((t (:foreground ,fg :background ,bg-1))))
      `(lsp-headerline-breadcrumb-symbol-face ((t (:background ,bg-1))))
@@ -281,13 +298,87 @@
      `(lsp-headerline-breadcrumb-segments-face ((t (:background ,bg-1))))
      `(lsp-headerline-breadcrumb-separator-face ((t (:foreground ,fg :background ,bg-1))))
      `(lsp-lsp-flycheck-warning-unnecessary-face ((t (:inherit flycheck-warning))))
+     `(lsp-treemacs-file-hint ((t (:foreground ,green :weight bold))))
+     `(lsp-treemacs-file-info ((t (:foreground ,green :weight bold))))
+     `(lsp-installation-buffer-face ((t (:foreground ,green))))
 
-   ;;;; rainbow-delimiters
+     ;;;; rainbow-delimiters
      `(rainbow-delimiters-base-face ((t (:foreground ,fg))))
      `(rainbow-delimiters-base-error-face ((t (:background ,red :foreground ,fg :weight bold))))
      `(rainbow-delimiters-mismatched-face ((t (:background ,red :foreground ,fg :weight bold))))
      `(rainbow-delimiters-unmatched-face ((t (:background  ,red :foreground ,fg :weight bold))))
 
+     ;;;; minibuffer
+     `(minibuffer-prompt ((t (:foreground ,blue))))
+
+     ;;;; ivy
+     `(ivy-current-match ((t (:background ,yellow+1 :foreground ,bg :weight bold))))
+     `(ivy-minibuffer-match-face-1 ((t (:background ,blue+1 :foreground ,bg :weight bold))))
+     `(ivy-minibuffer-match-face-2 ((t (:background ,green :foreground ,bg :weight bold))))
+     `(ivy-grep-info ((t (:foreground ,green :weight bold))))
+
+     ;;;; vertico-mode
+     `(vertico-current ((t (:background ,yellow+1 :foreground ,bg :weight bold))))
+
+     ;;;; marginalia-mode
+     ;; `(marginalia-key ((t (:foreground ,fg))))
+     ;; `(marginalia-symbol ((t (:foreground ,fg))))
+     ;; `(marginalia-list ((t (:foreground ,fg))))
+     ;; `(marginalia-number ((t (:foreground ,fg))))
+     `(marginalia-installed ((t (:foreground ,green))))
+     `(marginalia-on ((t (:foreground ,green))))
+
+     ;;;; markdown-mode
+     `(markdown-highlight-face ((t (:inherit highlight))))
+     `(markdown-highlighting-face ((t (:inherit highlight))))
+
+     ;;;; message-mode
+     `(message-header-cc ((t (:foreground ,green :weight bold))))
+     `(message-header-name ((t (:foreground ,green))))
+     `(message-header-newsgroups ((t (:foreground ,yellow+1))))
+     `(message-header-other ((t (:foreground ,magenta :weight bold))))
+     `(message-header-xheader ((t (:foreground ,blue-1))))
+     `(message-mml ((t (:foreground ,blue))))
+
+     ;;;; swiper
+     `(swiper-background-match-face-1 ((t (:inherit lazy-highlight))))
+     `(swiper-background-match-face-2 ((t (:background ,green :foreground ,bg))))
+     `(swiper-background-match-face-3 ((t (:background ,blue :foreground ,bg))))
+     `(swiper-background-match-face-4 ((t (:background ,purple :foreground ,bg))))
+     `(swiper-match-face-1 ((t (:inherit lazy-highlight))))
+     `(swiper-match-face-2 ((t (:background ,green :foreground ,bg))))
+     `(swiper-match-face-3 ((t (:background ,blue :foreground ,bg))))
+     `(swiper-match-face-4 ((t (:background ,purple :foreground ,bg))))
+
+     ;;;; undo-tree
+     `(undo-tree-visualizer-current-face ((t (:foreground ,red))))
+     `(undo-tree-visualizer-default-face ((t (:foreground ,fg))))
+     `(undo-tree-visualizer-register-face ((t (:foreground ,yellow+1))))
+     `(undo-tree-visualizer-unmodified-face ((t (:foreground ,blue))))
+
+     ;;;; xref
+     `(xref-file-header ((t (:foreground ,green :weight bold))))
+     `(xref-line-number ((t (:foreground ,yellow :weight bold))))
+
+     ;;;; diff
+     `(diff-added ((t (:background ,green+1 :foreground ,bg))))
+     `(diff-removed ((t (:background ,red+1 :foreground ,bg))))
+     `(diff-file-header ((t (:background ,bg-1 :foreground ,fg))))
+     `(diff-function ((t (:background ,bg+1 :foreground ,fg))))
+     `(diff-header ((t (:background ,bg+1 :foreground ,fg))))
+     `(diff-indicator-added ((t (:background ,green+1 :foreground ,bg))))
+     `(diff-indicator-changed ((t (:background ,yellow+1 :foreground ,bg))))
+     `(diff-indicator-removed ((t (:background ,red+1 :foreground ,bg))))
+     `(diff-refine-added ((t (:background ,green+1 :foreground ,bg))))
+     `(diff-refine-changed ((t (:background ,yellow+1 :foreground ,bg))))
+     `(diff-refine-removed ((t (:background ,red+1 :foreground ,bg))))
+
+     ;;;; custom
+     `(custom-invalid ((t (:background ,red :foreground ,bg))))
+     `(custom-modified ((t (:background ,blue+1 :foreground ,bg))))
+     `(custom-set ((t (:background ,fg :foreground ,bg))))
+     `(custom-state ((t (:foreground ,green))))
+     `(custom-themed ((t (:background ,blue-1 :foreground ,bg))))
      )))
 
 ;;; Add theme directory to custom theme load path
