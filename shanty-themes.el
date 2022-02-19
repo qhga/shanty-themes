@@ -79,8 +79,8 @@
      `(default ((t (:background ,bg :foreground ,fg))))
      ;; `(bold ((t (:weight bold))))
      ;; TODO: Add support to disable
-     `(fringe ((t (:background ,bg+1 ))))
-     `(vertical-border ((t (:foreground ,fg+1 ))))
+     `(fringe ((t (:background ,bg+1))))
+     `(vertical-border ((t (:foreground ,fg+1))))
      `(cursor ((t (:background ,white))))
      ;; TODO: Add support to disable
      `(hl-line ((t (:background ,bg+1))))
@@ -371,6 +371,11 @@
      `(custom-set ((t (:background ,fg :foreground ,bg))))
      `(custom-state ((t (:foreground ,green))))
      `(custom-themed ((t (:background ,blue-1 :foreground ,bg))))
+
+     ;;;; git-gutter / git-gutter-fringe
+     `(git-gutter-fr:added ((t (:backgroung ,bg+1 :foreground ,green))))
+     `(git-gutter-fr:modified ((t (:backgroung ,bg+1 :foreground ,yellow))))
+     `(git-gutter-fr:deleted ((t (:backgroung ,bg+1 :foreground ,red))))
      )))
 
 ;;; Add theme directory to custom theme load path
