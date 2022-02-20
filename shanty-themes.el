@@ -295,6 +295,7 @@
      `(lsp-installation-buffer-face ((t (:foreground ,green))))
      `(lsp-face-highlight-write ((t (:foreground ,purple+1 :underline t :weight bold))))
      `(lsp-face-highlight-read ((t (:foreground ,purple+1 :underline t :weight bold))))
+     `(lsp-face-highlight-textual ((t (:foreground ,purple+1 :underline t :weight bold))))
 
      ;;;; rainbow-delimiters
      `(rainbow-delimiters-base-face ((t (:foreground ,fg))))
