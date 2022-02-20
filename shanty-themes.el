@@ -1,4 +1,4 @@
-;;; shanty-theme.el --- The theme for digital workers
+;;; shanty-themes.el --- The theme for digital workers
 
 ;; Copyright (C) 2022 Philip Gaber
 
@@ -6,7 +6,7 @@
 ;; Maintainer: Philip Gaber <phga@posteo.de>
 ;; Created: 2022-02-07
 ;; URL: https://github.com/qhga/shanty-theme
-;; Version: 0.2
+;; Version: 0.3
 ;; Package-Requires: ((emacs "27.2"))
 ;; Keywords: faces, theme, blue, yellow, gold, dark, light
 
@@ -293,6 +293,8 @@
      `(lsp-treemacs-file-hint ((t (:foreground ,green :weight bold))))
      `(lsp-treemacs-file-info ((t (:foreground ,green :weight bold))))
      `(lsp-installation-buffer-face ((t (:foreground ,green))))
+     `(lsp-face-highlight-write ((t (:foreground ,purple+1 :underline t :weight bold))))
+     `(lsp-face-highlight-read ((t (:foreground ,purple+1 :underline t :weight bold))))
 
      ;;;; rainbow-delimiters
      `(rainbow-delimiters-base-face ((t (:foreground ,fg))))
@@ -388,4 +390,4 @@
 
 (provide 'shanty)
 
-;;; shanty-theme.el ends here
+;;; shanty-themes.el ends here

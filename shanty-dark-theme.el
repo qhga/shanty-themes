@@ -6,7 +6,7 @@
 ;; Maintainer: Philip Gaber <phga@posteo.de>
 ;; Created: 2022-02-07
 ;; URL: https://github.com/qhga/shanty-theme
-;; Version: 0.2
+;; Version: 0.3
 ;; Package-Requires: ((emacs "27.2"))
 ;; Keywords: faces, theme, blue, yellow, gold, dark
 
@@ -81,3 +81,5 @@ The theme has to be reloaded after changing anything in the faces group."
 (shanty--activate-theme 'shanty-dark)
 
 (provide-theme 'shanty-dark)
+
+;;; shanty-dark-theme.el ends here
