@@ -6,7 +6,7 @@
 ;; Maintainer: Philip Gaber <phga@posteo.de>
 ;; Created: 2022-02-07
 ;; URL: https://github.com/qhga/shanty-theme
-;; Version: 0.3
+;; Version: 0.4
 ;; Package-Requires: ((emacs "27.2"))
 ;; Keywords: faces, theme, blue, yellow, gold, dark
 
@@ -26,8 +26,7 @@
 (defconst shanty-theme-colors
   #s(hash-table
      test eq
-     data(
-          bg-2       "#000306"
+     data(bg-2       "#000306"
           bg-1       "#020e18"
           bg         "#0d1f2d"
           bg+1       "#1e3141"

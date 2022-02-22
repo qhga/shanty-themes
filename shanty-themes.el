@@ -6,7 +6,7 @@
 ;; Maintainer: Philip Gaber <phga@posteo.de>
 ;; Created: 2022-02-07
 ;; URL: https://github.com/qhga/shanty-theme
-;; Version: 0.3
+;; Version: 0.4
 ;; Package-Requires: ((emacs "27.2"))
 ;; Keywords: faces, theme, blue, yellow, gold, dark, light
 
@@ -86,12 +86,13 @@
      `(hl-line ((t (:background ,bg+1))))
      `(region ((t (:background ,(shanty--li-da bg-2 bg+2)))))
      `(link ((t (:foreground ,green :underline t))))
+     `(link-visited ((t (:foreground ,magenta+1 :underline t))))
      ;; `(button ((t (:foreground ,fg :background ,green))))
      `(isearch ((t (:background ,magenta+1 :foreground ,bg-2))))
+     `(isearch-fail ((t (:background ,red :foreground ,bg-2))))
      `(lazy-highlight ((t (:background ,green+2 :foreground ,bg))))
      `(query-replace ((t (:background ,magenta+1 :foreground ,bg-2))))
-     `(highlight ((t (:background ,purple+1 :foreground ,bg-2))))
-     `(trailing-whitespace ((t (:background ,red :foreground ,bg-2))))
+     `(highlight ((t (:foreground ,magenta :underline t))))
      `(completions-common-part ((t (:background ,blue+1 :foreground ,bg :weight bold))))
      `(success ((t (:foreground ,green :weight bold))))
      `(error ((t (:foreground ,red :weight bold))))
@@ -113,7 +114,21 @@
      `(font-lock-type-face ((t (:foreground ,blue))))
      `(font-lock-string-face ((t (:foreground ,green))))
      ;; `(font-negation-char-face ((t (:foreground ,green))))
+     `(trailing-whitespace ((t (:background ,red :foreground ,bg-2))))
+     `(whitespace-trailing ((t (:inherit trailing-whitespace))))
      `(whitespace-line ((t (:foreground ,orange))))
+     `(whitespace-indentation ((t (:foreground ,orange))))
+     `(whitespace-empty ((t (:foreground ,orange))))
+     `(whitespace-space-after-tab ((t (:foreground ,orange))))
+     `(whitespace-space-before-tab ((t (:foreground ,orange))))
+     `(whitespace-tab ((t (:foreground ,fg-1))))
+     `(whitespace-newline ((t (:foreground ,fg-1))))
+     `(whitespace-space ((t (:foreground ,fg-1))))
+     `(whitespace-hspace ((t (:foreground ,orange))))
+     `(whitespace-big-indent ((t (:foreground ,orange))))
+
+     ;;;; compilation
+     `(compilation-info ((t (:foreground ,blue+1))))
 
      ;;;; evil-mode
      `(evil-ex-search ((t (:inherit isearch))))
@@ -293,9 +308,27 @@
      `(lsp-treemacs-file-hint ((t (:foreground ,green :weight bold))))
      `(lsp-treemacs-file-info ((t (:foreground ,green :weight bold))))
      `(lsp-installation-buffer-face ((t (:foreground ,green))))
-     `(lsp-face-highlight-write ((t (:foreground ,purple+1 :underline t :weight bold))))
-     `(lsp-face-highlight-read ((t (:foreground ,purple+1 :underline t :weight bold))))
-     `(lsp-face-highlight-textual ((t (:foreground ,purple+1 :underline t :weight bold))))
+     `(lsp-face-highlight-write ((t   (:inherit highlight))))
+     `(lsp-face-highlight-read ((t    (:inherit highlight))))
+     `(lsp-face-highlight-textual ((t (:inherit highlight))))
+
+     `(lsp-ui-doc-header ((t (:background ,bg+1 :weight bold))))
+     `(lsp-ui-doc-background ((t (:background ,bg-1))))
+     `(lsp-ui-peek-filename ((t (:foreground ,yellow))))
+     `(lsp-ui-peek-footer ((t (:background ,bg+1 :weight bold))))
+     `(lsp-ui-peek-header ((t (:inherit lsp-ui-peek-footer))))
+     `(lsp-ui-peek-highlight ((t (:inherit lsp-ui-peek-footer ,@shanty-box))))
+     `(lsp-ui-peek-line-number ((t (:inherit linum))))
+     `(lsp-ui-peek-list ((t (:background ,bg-1))))
+     `(lsp-ui-peek-selection ((t (:background ,bg+1 :foreground ,fg+1 :weight bold))))
+
+     `(lsp-signature-posframe ((t (:background ,bg-1 :foreground ,fg :weight bold))))
+     `(lsp-ui-sideline-code-action ((t (:foreground ,yellow))))
+     `(lsp-ui-sideline-current-symbol ((t (:foreground ,fg+1 :weight bold ,@shanty-box))))
+     `(lsp-ui-sideline-symbol ((t (:foreground ,fg ,@shanty-box))))
+
+     ;;;; symbol-overlay
+     `(symbol-overlay-default-face ((t (:inherit highlight))))
 
      ;;;; rainbow-delimiters
      `(rainbow-delimiters-base-face ((t (:foreground ,fg))))
@@ -309,8 +342,93 @@
      ;;;; ivy
      `(ivy-current-match ((t (:background ,yellow+1 :foreground ,bg :weight bold))))
      `(ivy-minibuffer-match-face-1 ((t (:background ,blue+1 :foreground ,bg :weight bold))))
-     `(ivy-minibuffer-match-face-2 ((t (:background ,green :foreground ,bg :weight bold))))
+     `(ivy-minibuffer-match-face-2 ((t (:background ,purple+1 :foreground ,bg :weight bold))))
+     `(ivy-minibuffer-match-face-3 ((t (:background ,magenta+1 :foreground ,bg :weight bold))))
+     `(ivy-minibuffer-match-face-4 ((t (:background ,green+1 :foreground ,bg :weight bold))))
      `(ivy-grep-info ((t (:foreground ,green :weight bold))))
+     `(ivy-confirm-face ((t (:foreground ,green))))
+     `(ivy-cursor ((t (:inherit cursor :foreground ,bg))))
+     `(ivy-match-required-face ((t (:foreground ,red))))
+
+     ;;;; helm
+     `(helm-selection ((t (:background ,yellow+1 :foreground ,bg :weight bold))))
+     `(helm-match ((t (:background ,blue+1 :foreground ,bg :weight bold))))
+     `(helm-M-x-key ((t (:foreground ,yellow :weight bold))))
+     `(helm-action ((t (:foreground ,yellow :weight bold))))
+     `(helm-candidate-number ((t (:foreground ,blue :weight bold))))
+     `(helm-candidate-number-suspended ((t :foreground ,orange)))
+     `(helm-header ((t :background ,bg-1 :foreground ,fg+1 :overline ,fg-2)))
+     `(helm-header-line-left-margin ((t :foreground ,yellow+1 :weight bold)))
+     `(helm-source-header ((t (:background ,fg-2 :foreground ,fg+1 :weight bold
+                                           :height 1.3 :family "Sans Serif"))))
+
+     `(helm-bookmark-addressbook ((t :foreground ,green)))
+     `(helm-bookmark-directory ((t :foreground ,blue :weight bold)))
+     `(helm-bookmark-file ((t :foreground ,fg)))
+     `(helm-bookmark-file-not-found ((t :foreground ,red)))
+     `(helm-bookmark-gnus ((t :foreground ,purple+1)))
+     `(helm-bookmark-info ((t :foreground ,blue+1)))
+     `(helm-bookmark-man ((t :foreground ,yellow+1)))
+     `(helm-bookmark-w3m ((t :foreground ,blue+1)))
+
+     `(helm-buffer-archive ((t :foreground ,blue+1 :weight bold)))
+     `(helm-buffer-file ((t :foreground ,fg)))
+     `(helm-buffer-modified ((t :foreground ,yellow-1)))
+     `(helm-buffer-not-saved ((t :foreground ,red+1)))
+     `(helm-buffer-process ((t :foreground ,purple+1)))
+     `(helm-buffer-saved-out ((t :foreground ,red :weight bold)))
+     `(helm-buffer-size ((t :inherit shadow)))
+     `(helm-buffer-directory ((t :foreground ,blue :weight bold)))
+
+     `(helm-comint-prompts-buffer-name ((t :foreground ,green)))
+     `(helm-comint-prompts-promptidx ((t :foreground ,blue+1)))
+     `(helm-delete-async-message ((t :foreground ,purple+1 :weight bold)))
+     `(helm-eob-line ((t :foreground ,fg)))
+     `(helm-eshell-prompts-buffer-name ((t :foreground ,green)))
+     `(helm-eshell-prompts-promptidx ((t :foreground ,blue+1)))
+     `(helm-etags-file ((t :foreground ,fg-1 :underline t)))
+
+     `(helm-ff-file ((t :foreground ,fg)))
+     `(helm-ff-symlink ((t :foreground ,fg-1 :slant italic)))
+     `(helm-ff-truename ((t :foreground ,green)))
+     `(helm-ff-file-extension ((t :foreground ,fg)))
+     `(helm-ff-backup-file ((t :inherit shadow)))
+     `(helm-ff-denied ((t :foreground ,red)))
+     `(helm-ff-dirs ((t :foreground ,blue :weight bold)))
+     `(helm-ff-directory ((t :foreground ,blue :weight bold)))
+     `(helm-ff-dotted-directory ((t :foreground ,blue :weight bold)))
+     `(helm-ff-dotted-symlink-directory ((t :foreground ,fg-1 :slant italic)))
+     `(helm-ff-executable ((t :foreground ,fg)))
+     `(helm-ff-invalid-symlink ((t :inherit shadow :strike-through t)))
+     `(helm-ff-pipe ((t :foreground ,purple+1)))
+     `(helm-ff-prefix ((t :foreground ,purple+1)))
+     `(helm-ff-rsync-progress ((t :foreground ,red+1)))
+     `(helm-ff-socket ((t :foreground ,red+1)))
+     `(helm-ff-suid ((t :foreground ,red+1)))
+
+     `(helm-fd-finish ((t :foreground ,green)))
+     `(helm-grep-cmd-line ((t :foreground ,yellow-1)))
+     `(helm-grep-file ((t :foreground ,fg :weight bold)))
+     `(helm-grep-finish ((t :foreground ,green)))
+     `(helm-grep-lineno ((t :foreground ,fg+1)))
+     `(helm-grep-match ((t :foreground ,magenta+1)))
+     `(helm-history-deleted ((t :foreground ,red+1)))
+     `(helm-history-remote ((t :foreground ,red+1)))
+     `(helm-lisp-completion-info ((t :inherit compilation-info)))
+     `(helm-lisp-show-completion ((t :foreground ,green+1)))
+     `(helm-locate-finish ((t :inherit success)))
+     `(helm-minibuffer-prompt ((t :foreground ,blue)))
+     `(helm-moccur-buffer ((t :foreground ,blue+1 :underline t)))
+     `(helm-mode-prefix ((t :foreground ,purple+1)))
+     `(helm-no-file-buffer-modified ((t :foreground ,orange)))
+     `(helm-non-file-buffer ((t :inherit shadow)))
+     `(helm-prefarg ((t :foreground ,green)))
+     `(helm-resume-need-update ((t :background ,red :foreground ,bg :weight bold)))
+     `(helm-selection-line ((t :inherit highlight)))
+     `(helm-separator ((t :foreground ,fg-1)))
+     `(helm-time-zone-current ((t :foreground ,green+1)))
+     `(helm-time-zone-home ((t :foreground ,purple+1)))
+     `(helm-visible-mark ((t :background ,green :foreground ,bg)))
 
      ;;;; vertico-mode
      `(vertico-current ((t (:background ,yellow+1 :foreground ,bg :weight bold))))
@@ -336,6 +454,7 @@
      `(message-mml ((t (:foreground ,blue))))
 
      ;;;; swiper
+     `(swiper-line-face ((t (:inherit lazy-highlight))))
      `(swiper-background-match-face-1 ((t (:inherit lazy-highlight))))
      `(swiper-background-match-face-2 ((t (:background ,green :foreground ,bg))))
      `(swiper-background-match-face-3 ((t (:background ,blue :foreground ,bg))))
@@ -374,11 +493,39 @@
      `(custom-set ((t (:background ,fg :foreground ,bg))))
      `(custom-state ((t (:foreground ,green))))
      `(custom-themed ((t (:background ,blue-1 :foreground ,bg))))
+     `(custom-changed ((t (:background ,blue-1 :foreground ,bg))))
+     `(custom-comment ((t (:inherit shadow))))
 
      ;;;; git-gutter / git-gutter-fringe
      `(git-gutter-fr:added ((t (:backgroung ,bg+1 :foreground ,green))))
      `(git-gutter-fr:modified ((t (:backgroung ,bg+1 :foreground ,yellow))))
      `(git-gutter-fr:deleted ((t (:backgroung ,bg+1 :foreground ,red))))
+
+     ;;;; info
+     `(info-header-node ((t (:foreground ,fg :weight bold))))
+     `(info-index-match ((t (:background ,blue :foreground ,bg))))
+     `(info-menu-header ((t (:foreground ,fg :weight bold))))
+     `(info-menu-star ((t (:foreground ,red))))
+     `(info-node ((t (:foreground ,fg))))
+     `(info-header-xref ((t (:inherit link))))
+     `(info-xref ((t (:inherit link))))
+     `(info-xref-visited ((t (:inherit link-visited))))
+
+     ;;;; linum
+     `(line-number ((t (:inherit shadow))))
+     `(line-number-current-line ((t (:inherit shadow))))
+     `(line-number-major-tick ((t (:foreground ,fg :weight bold))))
+     `(line-number-minor-tick ((t (:foreground ,fg-1 :weight bold))))
+
+     ;;;; stuff I am not sure what is does
+     `(lv-separator ((t (:foreground ,fg-2))))
+     `(match ((t (:background ,blue+1 :foreground ,bg))))
+     `(widget-button-pressed ((t (:background ,bg+1 :weight bold))))
+     `(widget-documentation ((t (:foreground ,green))))
+     `(widget-field ((t (:background ,fg-2))))
+     `(widget-single-line-field ((t (:background ,fg-2))))
+     `(pulse-highlight-face ((t (:background ,blue+1 :foreground ,bg))))
+     `(pulse-highlight-start-face ((t (:background ,blue+1 :foreground ,bg))))
      )))
 
 ;;; Add theme directory to custom theme load path
