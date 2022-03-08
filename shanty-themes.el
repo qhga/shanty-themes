@@ -154,8 +154,8 @@
 
      ;;;; mode-line
      `(mode-line ((t (:background ,(shanty--li-da bg-2 bg-1) :foreground ,fg
-                                  :distant-foreground ,fg-2
-                                  :overline ,fg-2))))
+                      :distant-foreground ,fg-2
+                      :overline ,fg-2))))
      `(mode-line-active ((t (:inherit mode-line))))
      `(mode-line-inactive ((t (:inherit mode-line :background ,bg :foreground ,fg-2))))
      ;; TODO: I set this in my modeline config -> Otherwise it has no effect
@@ -191,11 +191,11 @@
      `(org-link ((t (:inherit button))))
      `(org-list-dt ((t (:weight bold))))
      `(org-block-begin-line ((t (:background ,bg+1
-                                             :foreground ,fg-1
-                                             :underline (:color ,fg-1) :extend t
-                                             :height 0.80))))
+                                 :foreground ,fg-1
+                                 :underline (:color ,fg-1) :extend t
+                                 :height 0.80))))
      `(org-block-end-line ((t (:inherit org-block-begin-line
-                                        :underline nil :overline ,fg-1))))
+                               :underline nil :overline ,fg-1))))
      `(org-block ((t (:background ,bg-1))))
      `(org-quote ((t (:inherit org-block))))
      `(org-verse ((t (:inherit org-block))))
@@ -264,9 +264,9 @@
      ;;;; avy: works like face, face-0, face-2 (face-1 is not the 3rd column)
      `(avy-background-face ((t (:background ,bg+1 :foreground ,fg-1 :extend t))))
      `(avy-lead-face ((t (:background ,magenta :foreground ,bg-1
-                                      ;; ,@shanty-box
-                                      :slant normal :weight bold
-                                      :box nil :underline nil :overline nil))))
+                          ;; ,@shanty-box
+                          :slant normal :weight bold
+                          :box nil :underline nil :overline nil))))
      `(avy-lead-face-0 ((t (:inherit avy-lead-face :background ,purple+1))))
      `(avy-lead-face-2 ((t (:inherit avy-lead-face :background ,yellow+1))))
      `(avy-lead-face-1 ((t (:inherit avy-lead-face :background ,red+1))))
@@ -360,7 +360,7 @@
      `(helm-header ((t :background ,bg-1 :foreground ,fg+1 :overline ,fg-2)))
      `(helm-header-line-left-margin ((t :foreground ,yellow+1 :weight bold)))
      `(helm-source-header ((t (:background ,fg-2 :foreground ,fg+1 :weight bold
-                                           :height 1.3 :family "Sans Serif"))))
+                               :height 1.3 :family "Sans Serif"))))
 
      `(helm-bookmark-addressbook ((t :foreground ,green)))
      `(helm-bookmark-directory ((t :foreground ,blue :weight bold)))
@@ -497,6 +497,11 @@
      `(custom-comment ((t (:inherit shadow))))
 
      ;;;; git-gutter / git-gutter-fringe
+     `(git-gutter:added ((t (:backgroung ,bg+1 :foreground ,green))))
+     `(git-gutter:modified ((t (:backgroung ,bg+1 :foreground ,yellow))))
+     `(git-gutter:deleted ((t (:backgroung ,bg+1 :foreground ,red))))
+     `(git-gutter:separator ((t (:backgroung ,bg+1 :foreground ,blue+1))))
+     `(git-gutter:unchanged ((t (:backgroung ,bg+1 :foreground ,fg))))
      `(git-gutter-fr:added ((t (:backgroung ,bg+1 :foreground ,green))))
      `(git-gutter-fr:modified ((t (:backgroung ,bg+1 :foreground ,yellow))))
      `(git-gutter-fr:deleted ((t (:backgroung ,bg+1 :foreground ,red))))
@@ -516,6 +521,77 @@
      `(line-number-current-line ((t (:inherit shadow))))
      `(line-number-major-tick ((t (:foreground ,fg :weight bold))))
      `(line-number-minor-tick ((t (:foreground ,fg-1 :weight bold))))
+
+     ;;;; gnus
+     `(gnus-emphasis-highlight-words ((t (:background ,bg-1 :foreground ,yellow+1))))
+     ;; higher level == less important
+     `(gnus-group-mail-1 ((t (:foreground ,yellow+1 :weight bold))))
+     `(gnus-group-mail-1-empty ((t (:foreground ,yellow+1))))
+     `(gnus-group-mail-2 ((t (:foreground ,green :weight bold))))
+     `(gnus-group-mail-2-empty ((t (:foreground ,green))))
+     `(gnus-group-mail-3 ((t (:foreground ,blue+1 :weight bold))))
+     `(gnus-group-mail-3-empty ((t (:foreground ,blue+1))))
+     `(gnus-group-mail-low ((t (:foreground ,fg-1 :weight bold))))
+     `(gnus-group-mail-low-empty ((t (:foreground ,fg-1))))
+
+     `(gnus-group-news-1 ((t (:foreground ,yellow+1 :weight bold))))
+     `(gnus-group-news-1-empty ((t (:foreground ,yellow+1))))
+     `(gnus-group-news-2 ((t (:foreground ,green :weight bold))))
+     `(gnus-group-news-2-empty ((t (:foreground ,green))))
+     `(gnus-group-news-3 ((t (:foreground ,blue+1 :weight bold))))
+     `(gnus-group-news-3-empty ((t (:foreground ,blue+1))))
+     `(gnus-group-news-4 ((t (:foreground ,fg :weight bold))))
+     `(gnus-group-news-4-empty ((t (:foreground ,fg))))
+     `(gnus-group-news-5 ((t (:foreground ,fg :weight bold))))
+     `(gnus-group-news-5-empty ((t (:foreground ,fg))))
+     `(gnus-group-news-6 ((t (:foreground ,fg :weight bold))))
+     `(gnus-group-news-6-empty ((t (:foreground ,fg))))
+     `(gnus-group-news-low ((t (:foreground ,fg-1 :weight bold))))
+     `(gnus-group-news-low-empty ((t (:foreground ,fg-1))))
+
+     `(gnus-header-content ((t (:foreground ,blue+1))))
+     `(gnus-header-from ((t (:foreground ,blue+1 :weight bold))))
+     `(gnus-header-name ((t (:foreground ,fg-1 :weight bold))))
+     `(gnus-header-subject ((t (:foreground ,magenta+1 :weight bold ,@shanty-box))))
+     `(gnus-header-newsgroups ((t (:foreground ,yellow+1 :slant italic))))
+
+     `(gnus-server-cloud ((t (:foreground ,green+1 :weight bold))))
+     `(gnus-server-cloud-host ((t (:background ,green+1 :foreground ,bg :weight bold))))
+     `(gnus-server-denied ((t (:foreground ,red :weight bold))))
+     `(gnus-server-offline ((t (:foreground ,magenta :weight bold))))
+     `(gnus-server-opened ((t (:foreground ,green :weight bold))))
+
+     `(gnus-summary-cancelled ((t (:foreground ,yellow+1 :weight bold))))
+     `(gnus-summary-high-ancient ((t (:foreground ,blue+1 :weight bold))))
+     `(gnus-summary-high-read ((t (:foreground ,green+1 :weight bold))))
+     `(gnus-summary-high-ticked ((t (:foreground ,red+1 :weight bold))))
+     `(gnus-summary-high-undownloaded ((t (:foreground ,fg-1 :weight bold))))
+     `(gnus-summary-high-unread ((t (:foreground ,fg :weight bold))))
+
+     `(gnus-summary-low-ancient ((t (:foreground ,blue+1 :slant italic))))
+     `(gnus-summary-low-read ((t (:foreground ,green+1 :slant italic))))
+     `(gnus-summary-low-ticked ((t (:foreground ,red+1 :slant italic))))
+     `(gnus-summary-low-undownloaded ((t (:foreground ,fg-1 :slant italic))))
+     `(gnus-summary-low-unread ((t (:foreground ,fg :slant italic))))
+
+     `(gnus-summary-normal-ancient ((t (:foreground ,blue+1))))
+     `(gnus-summary-normal-read ((t (:foreground ,green+1))))
+     `(gnus-summary-normal-ticked ((t (:foreground ,red+1))))
+     `(gnus-summary-normal-undownloaded ((t (:foreground ,fg-1))))
+     `(gnus-summary-normal-unread ((t (:foreground ,fg))))
+
+     `(message-header-cc ((t (:foreground ,blue+1 :weight bold))))
+     `(message-header-from ((t (:foreground ,blue+1 :weight bold))))
+     `(message-header-to ((t (:foreground ,blue+1 :weight bold))))
+     `(message-header-name ((t (:foreground ,fg-1 :weight bold))))
+     `(message-header-subject ((t (:foreground ,magenta+1 :weight bold ,@shanty-box))))
+     `(message-header-xheader ((t (:foreground ,blue-1))))
+     `(message-header-other ((t (:foreground ,blue+1))))
+
+     `(message-cited-text-1 ((t (:foreground ,magenta+1))))
+     `(message-cited-text-2 ((t (:foreground ,green+1))))
+     `(message-cited-text-3 ((t (:foreground ,yellow+1))))
+     `(message-cited-text-4 ((t (:foreground ,orange))))
 
      ;;;; stuff I am not sure what is does
      `(lv-separator ((t (:foreground ,fg-2))))
