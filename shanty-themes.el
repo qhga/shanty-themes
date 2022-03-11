@@ -126,6 +126,7 @@
      `(whitespace-space ((t (:foreground ,fg-1))))
      `(whitespace-hspace ((t (:foreground ,orange))))
      `(whitespace-big-indent ((t (:foreground ,orange))))
+     `(sh-heredoc ((t (:foreground ,fg))))
 
      ;;;; compilation
      `(compilation-info ((t (:foreground ,blue+1))))
