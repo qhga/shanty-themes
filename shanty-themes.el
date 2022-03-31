@@ -488,6 +488,24 @@
      `(diff-refine-changed ((t (:background ,yellow+1 :foreground ,bg))))
      `(diff-refine-removed ((t (:background ,red+1 :foreground ,bg))))
 
+     ;;;; ediff
+     `(ediff-current-diff-A ((t (:background ,red+1 :foreground ,bg))))
+     `(ediff-current-diff-Ancestor ((t (:background ,blue-1 :foreground ,bg))))
+     `(ediff-current-diff-B ((t (:background ,green+1 :foreground ,bg))))
+     `(ediff-current-diff-C ((t (:background ,yellow+1 :foreground ,bg))))
+     `(ediff-fine-diff-A ((t (:background ,red :foreground ,bg))))
+     `(ediff-fine-diff-Ancestor ((t (:background ,blue :foreground ,bg))))
+     `(ediff-fine-diff-B ((t (:background ,green :foreground ,bg))))
+     `(ediff-fine-diff-C ((t (:background ,yellow :foreground ,bg))))
+     `(ediff-even-diff-A ((t (:background ,fg+1 :foreground ,bg))))
+     `(ediff-even-diff-B ((t (:background ,fg :foreground ,bg+1))))
+     `(ediff-even-diff-Ancestor ((t (:inherit ediff-even-diff-B))))
+     `(ediff-even-diff-C ((t (:inherit ediff-even-diff-A))))
+     `(ediff-odd-diff-A ((t (:background ,fg+1 :foreground ,bg))))
+     `(ediff-odd-diff-B ((t (:background ,fg :foreground ,bg+1))))
+     `(ediff-odd-diff-Ancestor ((t (:inherit ediff-odd-diff-B))))
+     `(ediff-odd-diff-C ((t (:inherit ediff-odd-diff-A))))
+
      ;;;; custom
      `(custom-invalid ((t (:background ,red :foreground ,bg))))
      `(custom-modified ((t (:background ,blue+1 :foreground ,bg))))
