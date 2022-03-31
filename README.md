@@ -15,10 +15,10 @@ For now this theme is not available via melpa, etc.
 One could either use straight to install the package:
 
 ```emacs-lisp
-(straight-use-package '(shanty-theme :host github :repo "qhga/shanty-theme"))
+(straight-use-package '(shanty-themes :host github :repo "qhga/shanty-themes"))
 ```
 
-Or by manually adding `shanty-theme.el`, `shanty-dark-theme.el` and
+Or by manually adding `shanty-themes.el`, `shanty-dark-theme.el` and
 `shanty-light-theme.el` to `~/.emacs.d/themes` and the following to your `init.el`:
 
 ```emacs-lisp

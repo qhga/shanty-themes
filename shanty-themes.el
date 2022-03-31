@@ -1,11 +1,11 @@
-;;; shanty-theme.el --- The theme for digital workers -*- lexical-binding: t; -*-
+;;; shanty-themes.el --- The themes for digital workers -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2022 Philip Gaber
 
 ;; Author: Philip Gaber <phga@posteo.de>
 ;; Maintainer: Philip Gaber <phga@posteo.de>
 ;; Created: 2022-02-07
-;; URL: https://github.com/qhga/shanty-theme
+;; URL: https://github.com/qhga/shanty-themes
 ;; Version: 1.0
 ;; Package-Requires: ((emacs "27.2"))
 ;; Keywords: faces, theme, blue, yellow, gold, dark, light
@@ -28,12 +28,12 @@
 
 
 ;;; Commentary:
-;; Shanty provides a light & dark theme for Emacs
+;; Shanty themes provide a light & dark theme for Emacs
 
 ;;; Code:
 
 ;; So the doc can contain the quoted version
-(declare-function shanty--li-da "shanty-theme")
+(declare-function shanty--li-da "shanty-themes")
 
 (defun shanty--activate-theme(theme colors)
   "Set the faces according to the activated theme.
@@ -647,6 +647,6 @@ theme.  Possible values for THEME could be 'shanty-light or
     (unless (equal dir (expand-file-name "themes/" data-directory))
       (add-to-list 'custom-theme-load-path dir))))
 
-(provide 'shanty-theme)
+(provide 'shanty-themes)
 
-;;; shanty-theme.el ends here
+;;; shanty-themes.el ends here
