@@ -33,17 +33,17 @@
 ;;; Code:
 
 ;; So the doc can contain the quoted version
-(declare-function shanty--li-da "shanty-themes")
+(declare-function shanty-themes--li-da "shanty-themes")
 
-(defun shanty--activate-theme(theme colors)
+(defun shanty-themes--activate-theme(theme colors)
   "Set the faces according to the activated theme.
 
 Populates the color variables according to the provided COLORS
 hashmap which are then used to define the faces.  THEME is later
-used in the closure `shanty--li-da' to make distinct changes to
-some faces that have to be different in the light vs the dark
-theme.  Possible values for THEME could be 'shanty-light or
-'shanty-dark"
+used in the closure `shanty-themes--li-da' to make distinct
+changes to some faces that have to be different in the light vs
+the dark theme.  Possible values for THEME could be 'shanty-light
+or 'shanty-dark"
   (let* ((bg-2       (gethash 'bg-2      colors))
          (bg-1       (gethash 'bg-1      colors))
          (bg         (gethash 'bg        colors))
@@ -85,7 +85,7 @@ theme.  Possible values for THEME could be 'shanty-light or
          (shanty-heading '(:weight bold))
          (shanty-box '(:box (:line-width -1))))
 
-    (defun shanty--li-da(light-color dark-color)
+    (defun shanty-themes--li-da(light-color dark-color)
       "Depending on the requested theme returns the appropriate color"
       (if (eq theme 'shanty-light) light-color dark-color))
 
@@ -101,7 +101,7 @@ theme.  Possible values for THEME could be 'shanty-light or
      `(cursor ((t (:background ,white))))
      ;; TODO: Add support to disable
      `(hl-line ((t (:background ,bg+1))))
-     `(region ((t (:background ,(shanty--li-da bg-2 bg+2)))))
+     `(region ((t (:background ,(shanty-themes--li-da bg-2 bg+2)))))
      `(link ((t (:foreground ,green :underline t))))
      `(link-visited ((t (:foreground ,magenta+1 :underline t))))
      ;; `(button ((t (:foreground ,fg :background ,green))))
@@ -120,7 +120,7 @@ theme.  Possible values for THEME could be 'shanty-light or
      `(show-paren-match ((t (:background ,fg-2))))
      ;; TODO: Not working properly -> mayb rainbow-delimiter
      `(show-paren-mismatch ((t (:background ,red))))
-     `(shadow ((t (:foreground ,(shanty--li-da fg-1 fg-2)))))
+     `(shadow ((t (:foreground ,(shanty-themes--li-da fg-1 fg-2)))))
      `(font-lock-comment-face ((t (:inherit shadow))))
      `(font-lock-doc-face ((t (:foreground ,magenta))))
      `(font-lock-keyword-face ((t (:foreground ,yellow :weight bold))))
@@ -171,7 +171,7 @@ theme.  Possible values for THEME could be 'shanty-light or
      `(dired-async-mode-message ((t (:foreground ,yellow))))
 
      ;;;; mode-line
-     `(mode-line ((t (:background ,(shanty--li-da bg-2 bg-1) :foreground ,fg
+     `(mode-line ((t (:background ,(shanty-themes--li-da bg-2 bg-1) :foreground ,fg
                       :distant-foreground ,fg-2
                       :overline ,fg-2))))
      `(mode-line-active ((t (:inherit mode-line))))

@@ -29,7 +29,7 @@
 
 ;;; Code:
 
-(declare-function shanty--activate-theme "shanty-themes")
+(declare-function shanty-themes--activate-theme "shanty-themes")
 
 (defconst shanty-colors
   #s(hash-table
@@ -86,7 +86,7 @@ The theme has to be reloaded after changing anything in the faces group."
 (when load-file-name
   (load-file (concat (file-name-directory load-file-name) "shanty-themes.el")))
 
-(shanty--activate-theme 'shanty-light shanty-colors)
+(shanty-themes--activate-theme 'shanty-light shanty-colors)
 
 (provide-theme 'shanty-light)
 
