@@ -81,7 +81,7 @@ The theme has to be reloaded after changing anything in the faces group."
   :group 'faces)
 
 (when load-file-name
-  (load-file (concat (file-name-directory load-file-name) "shanty-themes.el")))
+  (load-file (concat (file-name-directory load-file-name) "shanty-theme.el")))
 
 (shanty--activate-theme 'shanty-dark shanty-theme-colors)
 

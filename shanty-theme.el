@@ -1,4 +1,4 @@
-;;; shanty-themes.el --- The theme for digital workers -*- lexical-binding: t; -*-
+;;; shanty-theme.el --- The theme for digital workers -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2022 Philip Gaber
 
@@ -643,6 +643,6 @@ Possible values for THEME could be 'shanty-light or 'shanty-dark"
     (unless (equal dir (expand-file-name "themes/" data-directory))
       (add-to-list 'custom-theme-load-path dir))))
 
-(provide 'shanty)
+(provide 'shanty-theme)
 
-;;; shanty-themes.el ends here
+;;; shanty-theme.el ends here
