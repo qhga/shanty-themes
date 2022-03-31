@@ -29,6 +29,8 @@
 
 ;;; Code:
 
+(declare-function shanty--activate-theme "shanty-theme")
+
 (defconst shanty-theme-colors
   #s(hash-table
      test eq

@@ -32,14 +32,18 @@
 
 ;;; Code:
 
+;; So the doc can contain the quoted version
+(declare-function shanty--li-da "shanty-theme")
+
 (defun shanty--activate-theme(theme colors)
   "Set the faces according to the activated theme.
 
 Populates the color variables according to the provided COLORS
 hashmap which are then used to define the faces.  THEME is later
-used in `shanty--li-da' to make distinct changes to some faces
-that have to be different in the light vs the dark theme.
-Possible values for THEME could be 'shanty-light or 'shanty-dark"
+used in the closure `shanty--li-da' to make distinct changes to
+some faces that have to be different in the light vs the dark
+theme.  Possible values for THEME could be 'shanty-light or
+'shanty-dark"
   (let* ((bg-2       (gethash 'bg-2      colors))
          (bg-1       (gethash 'bg-1      colors))
          (bg         (gethash 'bg        colors))
@@ -54,14 +58,14 @@ Possible values for THEME could be 'shanty-light or 'shanty-dark"
          (yellow-1   (gethash 'yellow-1  colors))
          (yellow     (gethash 'yellow    colors))
          (yellow+1   (gethash 'yellow+1  colors))
-         (orange-1   (gethash 'orange-1  colors))
+         ;; (orange-1   (gethash 'orange-1  colors))
          (orange     (gethash 'orange    colors))
          (orange+1   (gethash 'orange+1  colors))
          ;; (red-2      (gethash 'red-2     colors))
-         (red-1      (gethash 'red-1     colors))
+         ;; (red-1      (gethash 'red-1     colors))
          (red        (gethash 'red       colors))
          (red+1      (gethash 'red+1     colors))
-         (green-1    (gethash 'green-1   colors))
+         ;; (green-1    (gethash 'green-1   colors))
          (green      (gethash 'green     colors))
          (green+1    (gethash 'green+1   colors))
          (green+2    (gethash 'green+2   colors))
@@ -69,11 +73,11 @@ Possible values for THEME could be 'shanty-light or 'shanty-dark"
          (blue-1     (gethash 'blue-1    colors))
          (blue       (gethash 'blue      colors))
          (blue+1     (gethash 'blue+1    colors))
-         (magenta-2  (gethash 'magenta-2 colors))
-         (magenta-1  (gethash 'magenta-1 colors))
+         ;; (magenta-2  (gethash 'magenta-2 colors))
+         ;; (magenta-1  (gethash 'magenta-1 colors))
          (magenta    (gethash 'magenta   colors))
          (magenta+1  (gethash 'magenta+1 colors))
-         (purple-1   (gethash 'purple-1  colors))
+         ;; (purple-1   (gethash 'purple-1  colors))
          ;; (purple-2   (gethash 'purple-2  colors))
          (purple     (gethash 'purple    colors))
          (purple+1   (gethash 'purple+1  colors))
