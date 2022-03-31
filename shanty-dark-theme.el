@@ -82,6 +82,7 @@ a screen full of pleasant colors on a dark background.")
 The theme has to be reloaded after changing anything in the faces group."
   :group 'faces)
 
+;;;###autoload
 (when load-file-name
   (load-file (concat (file-name-directory load-file-name) "shanty-themes.el")))
 
