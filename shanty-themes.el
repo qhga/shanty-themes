@@ -6,7 +6,7 @@
 ;; Maintainer: Philip Gaber <phga@posteo.de>
 ;; Created: 2022-02-07
 ;; URL: https://github.com/qhga/shanty-theme
-;; Version: 0.4
+;; Version: 1.0
 ;; Package-Requires: ((emacs "27.2"))
 ;; Keywords: faces, theme, blue, yellow, gold, dark, light
 
@@ -26,44 +26,58 @@
 ;; Resources I found useful
 ;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Face-Attributes.html
 
-(defun shanty--activate-theme(theme)
-  (let* ((bg-2       (gethash 'bg-2      shanty-theme-colors))
-         (bg-1       (gethash 'bg-1      shanty-theme-colors))
-         (bg         (gethash 'bg        shanty-theme-colors))
-         (bg+1       (gethash 'bg+1      shanty-theme-colors))
-         (bg+2       (gethash 'bg+2      shanty-theme-colors))
-         (fg-2       (gethash 'fg-2      shanty-theme-colors))
-         (fg-1       (gethash 'fg-1      shanty-theme-colors))
-         (fg         (gethash 'fg        shanty-theme-colors))
-         (fg+1       (gethash 'fg+1      shanty-theme-colors))
-         (white      (gethash 'white     shanty-theme-colors))
-         (black      (gethash 'black     shanty-theme-colors))
-         (yellow-1   (gethash 'yellow-1  shanty-theme-colors))
-         (yellow     (gethash 'yellow    shanty-theme-colors))
-         (yellow+1   (gethash 'yellow+1  shanty-theme-colors))
-         (orange-1   (gethash 'orange-1  shanty-theme-colors))
-         (orange     (gethash 'orange    shanty-theme-colors))
-         (orange+1   (gethash 'orange+1  shanty-theme-colors))
-         ;; (red-2      (gethash 'red-2     shanty-theme-colors))
-         (red-1      (gethash 'red-1     shanty-theme-colors))
-         (red        (gethash 'red       shanty-theme-colors))
-         (red+1      (gethash 'red+1     shanty-theme-colors))
-         (green-1    (gethash 'green-1   shanty-theme-colors))
-         (green      (gethash 'green     shanty-theme-colors))
-         (green+1    (gethash 'green+1   shanty-theme-colors))
-         (green+2    (gethash 'green+2   shanty-theme-colors))
-         ;; (blue-2     (gethash 'blue-2    shanty-theme-colors))
-         (blue-1     (gethash 'blue-1    shanty-theme-colors))
-         (blue       (gethash 'blue      shanty-theme-colors))
-         (blue+1     (gethash 'blue+1    shanty-theme-colors))
-         (magenta-2  (gethash 'magenta-2 shanty-theme-colors))
-         (magenta-1  (gethash 'magenta-1 shanty-theme-colors))
-         (magenta    (gethash 'magenta   shanty-theme-colors))
-         (magenta+1  (gethash 'magenta+1 shanty-theme-colors))
-         (purple-1   (gethash 'purple-1  shanty-theme-colors))
-         ;; (purple-2   (gethash 'purple-2  shanty-theme-colors))
-         (purple     (gethash 'purple    shanty-theme-colors))
-         (purple+1   (gethash 'purple+1  shanty-theme-colors))
+
+;;; Commentary:
+;; Shanty provides a light & dark theme for Emacs
+
+;;; Code:
+
+(defun shanty--activate-theme(theme colors)
+  "Set the faces according to the activated theme.
+
+Populates the color variables according to the provided COLORS
+hashmap which are then used to define the faces.  THEME is later
+used in `shanty--li-da' to make distinct changes to some faces
+that have to be different in the light vs the dark
+theme.  Possible values for THEME could be 'shanty-light or
+'shanty-dark"
+  (let* ((bg-2       (gethash 'bg-2      colors))
+         (bg-1       (gethash 'bg-1      colors))
+         (bg         (gethash 'bg        colors))
+         (bg+1       (gethash 'bg+1      colors))
+         (bg+2       (gethash 'bg+2      colors))
+         (fg-2       (gethash 'fg-2      colors))
+         (fg-1       (gethash 'fg-1      colors))
+         (fg         (gethash 'fg        colors))
+         (fg+1       (gethash 'fg+1      colors))
+         (white      (gethash 'white     colors))
+         (black      (gethash 'black     colors))
+         (yellow-1   (gethash 'yellow-1  colors))
+         (yellow     (gethash 'yellow    colors))
+         (yellow+1   (gethash 'yellow+1  colors))
+         (orange-1   (gethash 'orange-1  colors))
+         (orange     (gethash 'orange    colors))
+         (orange+1   (gethash 'orange+1  colors))
+         ;; (red-2      (gethash 'red-2     colors))
+         (red-1      (gethash 'red-1     colors))
+         (red        (gethash 'red       colors))
+         (red+1      (gethash 'red+1     colors))
+         (green-1    (gethash 'green-1   colors))
+         (green      (gethash 'green     colors))
+         (green+1    (gethash 'green+1   colors))
+         (green+2    (gethash 'green+2   colors))
+         ;; (blue-2     (gethash 'blue-2    colors))
+         (blue-1     (gethash 'blue-1    colors))
+         (blue       (gethash 'blue      colors))
+         (blue+1     (gethash 'blue+1    colors))
+         (magenta-2  (gethash 'magenta-2 colors))
+         (magenta-1  (gethash 'magenta-1 colors))
+         (magenta    (gethash 'magenta   colors))
+         (magenta+1  (gethash 'magenta+1 colors))
+         (purple-1   (gethash 'purple-1  colors))
+         ;; (purple-2   (gethash 'purple-2  colors))
+         (purple     (gethash 'purple    colors))
+         (purple+1   (gethash 'purple+1  colors))
 
          (shanty-heading '(:weight bold))
          (shanty-box '(:box (:line-width -1))))

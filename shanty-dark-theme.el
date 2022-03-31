@@ -6,7 +6,7 @@
 ;; Maintainer: Philip Gaber <phga@posteo.de>
 ;; Created: 2022-02-07
 ;; URL: https://github.com/qhga/shanty-theme
-;; Version: 0.4
+;; Version: 1.0
 ;; Package-Requires: ((emacs "27.2"))
 ;; Keywords: faces, theme, blue, yellow, gold, dark
 
@@ -22,6 +22,12 @@
 
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+
+;;; Commentary:
+;; Shanty provides a light & dark theme for Emacs
+
+;;; Code:
 
 (defconst shanty-theme-colors
   #s(hash-table
@@ -77,7 +83,7 @@ The theme has to be reloaded after changing anything in the faces group."
 (when load-file-name
   (load-file (concat (file-name-directory load-file-name) "shanty-themes.el")))
 
-(shanty--activate-theme 'shanty-dark)
+(shanty--activate-theme 'shanty-dark shanty-theme-colors)
 
 (provide-theme 'shanty-dark)
 
