@@ -1,4 +1,4 @@
-;;; shanty-light-theme.el --- The theme for digital workers (light)
+;;; shanty-light-theme.el --- The theme for digital workers (light) -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2022 Philip Gaber
 

@@ -1,4 +1,4 @@
-;;; shanty-dark-theme.el --- The theme for digital workers (dark)
+;;; shanty-dark-theme.el --- The theme for digital workers (dark) -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2022 Philip Gaber
 

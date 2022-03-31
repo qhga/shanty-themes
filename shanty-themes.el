@@ -1,4 +1,4 @@
-;;; shanty-themes.el --- The theme for digital workers
+;;; shanty-themes.el --- The theme for digital workers -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2022 Philip Gaber
 
@@ -38,9 +38,8 @@
 Populates the color variables according to the provided COLORS
 hashmap which are then used to define the faces.  THEME is later
 used in `shanty--li-da' to make distinct changes to some faces
-that have to be different in the light vs the dark
-theme.  Possible values for THEME could be 'shanty-light or
-'shanty-dark"
+that have to be different in the light vs the dark theme.
+Possible values for THEME could be 'shanty-light or 'shanty-dark"
   (let* ((bg-2       (gethash 'bg-2      colors))
          (bg-1       (gethash 'bg-1      colors))
          (bg         (gethash 'bg        colors))
@@ -634,8 +633,7 @@ theme.  Possible values for THEME could be 'shanty-light or
      `(widget-field ((t (:background ,fg-2))))
      `(widget-single-line-field ((t (:background ,fg-2))))
      `(pulse-highlight-face ((t (:background ,blue+1 :foreground ,bg))))
-     `(pulse-highlight-start-face ((t (:background ,blue+1 :foreground ,bg))))
-     )))
+     `(pulse-highlight-start-face ((t (:background ,blue+1 :foreground ,bg)))))))
 
 ;;; Add theme directory to custom theme load path
 ;;; Source: modus-themes (thanks)
