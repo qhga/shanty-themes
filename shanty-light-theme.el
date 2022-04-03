@@ -7,7 +7,6 @@
 ;; Created: 2022-02-07
 ;; URL: https://github.com/qhga/shanty-themes
 ;; Version: 1.0
-;; Package-Requires: ((emacs "27.2"))
 ;; Keywords: faces, theme, blue, yellow, gold, light
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -31,7 +30,7 @@
 
 (declare-function shanty-themes--activate-theme "shanty-themes")
 
-(defconst shanty-colors
+(defconst shanty-themes-colors
   #s(hash-table
      test eq
      data(bg-2       "#E1E6FC"
@@ -72,12 +71,12 @@
           purple     "#a86cdc"
           purple+1   "#863fc4")))
 
-(deftheme shanty-light
+(deftheme shanty-themes-light
   "The shanty emacs theme is meant for us, you and me - the workers - who may
 not get dirty hands very often but love to code and tinker while looking at
 a screen full of pleasant colors on a light background.")
 
-(defgroup shanty-light nil
+(defgroup shanty-themes-light nil
   "Shanty theme options.
 The theme has to be reloaded after changing anything in the faces group."
   :group 'faces)
@@ -86,8 +85,9 @@ The theme has to be reloaded after changing anything in the faces group."
 (when load-file-name
   (load-file (concat (file-name-directory load-file-name) "shanty-themes.el")))
 
-(shanty-themes--activate-theme 'shanty-light shanty-colors)
+(shanty-themes--activate-theme 'shanty-themes-light shanty-themes-colors)
 
-(provide-theme 'shanty-light)
+(provide-theme 'shanty-themes-light)
+(provide 'shanty-light-theme)
 
 ;;; shanty-light-theme.el ends here
