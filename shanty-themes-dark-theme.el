@@ -88,6 +88,6 @@ The theme has to be reloaded after changing anything in the faces group."
 (shanty-themes--activate-theme 'shanty-themes-dark shanty-themes-colors)
 
 (provide-theme 'shanty-themes-dark)
-(provide 'shanty-dark-theme)
+(provide 'shanty-themes-dark-theme)
 
-;;; shanty-dark-theme.el ends here
+;;; shanty-themes-dark-theme.el ends here

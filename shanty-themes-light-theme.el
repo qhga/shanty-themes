@@ -88,6 +88,6 @@ The theme has to be reloaded after changing anything in the faces group."
 (shanty-themes--activate-theme 'shanty-themes-light shanty-themes-colors)
 
 (provide-theme 'shanty-themes-light)
-(provide 'shanty-light-theme)
+(provide 'shanty-themes-light-theme)
 
-;;; shanty-light-theme.el ends here
+;;; shanty-themes-light-theme.el ends here
