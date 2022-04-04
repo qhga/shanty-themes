@@ -1,3 +1,5 @@
+[![MELPA](https://melpa.org/packages/shanty-themes-badge.svg)](https://melpa.org/#/shanty-themes)
+
 # Shanty Emacs Theme
 
 The shanty emacs theme is meant for us, you and me - the workers - who may
@@ -11,8 +13,23 @@ This theme provides a dark and also a light variant.
 
 ## Installation
 
-For now this theme is not available via melpa, etc.
-One could either use straight to install the package:
+The theme is now available through `package.el` (MELPA).
+
+```emacs-lisp
+;; Add this to your init.el to make packages from MELPA available through package.el
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(package-initialize)
+
+;; Install the theme
+(package-install 'shanty-themes)
+```
+
+Or interactively via `M-x` `package-install` and then type `shanty-themes`.
+
+If the package didn't show up try `M-x` `package-refresh-contents`.
+
+Alternatively, one could either use straight to install the package:
 
 ```emacs-lisp
 (straight-use-package '(shanty-themes :host github :repo "qhga/shanty-themes"))
