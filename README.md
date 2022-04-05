@@ -59,7 +59,9 @@ To load the theme automatically on startup add the following code to your init.e
 ### Shanty Themes Dark
 
 ![shanty dark](assets/shanty-dark.png)
+![shanty dark vector](assets/shanty-dark-vector.png)
 
 ### Shanty Themes Light
 
 ![shanty light](assets/shanty-light.png)
+![shanty light vector](assets/shanty-light-vector.png)
