@@ -87,7 +87,7 @@ or 'shanty-dark"
 
     (defun shanty-themes--li-da(light-color dark-color)
       "Depending on the requested theme returns the appropriate color"
-      (if (eq theme 'shanty-light) light-color dark-color))
+      (if (eq theme 'shanty-themes-light) light-color dark-color))
 
     (custom-theme-set-faces
      theme
