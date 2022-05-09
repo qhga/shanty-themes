@@ -81,13 +81,14 @@ a screen full of pleasant colors on a light background.")
 The theme has to be reloaded after changing anything in the faces group."
   :group 'faces)
 
-;;;###autoload
-(when load-file-name
-  (load-file (concat (file-name-directory load-file-name) "shanty-themes.el")))
+(require 'shanty-themes)
 
 (shanty-themes--activate-theme 'shanty-themes-light shanty-themes-colors)
 
 (provide-theme 'shanty-themes-light)
 (provide 'shanty-themes-light-theme)
 
+;; Local variables:
+;; package-lint-main-file: "shanty-themes.el"
+;; end:
 ;;; shanty-themes-light-theme.el ends here
