@@ -81,13 +81,7 @@ a screen full of pleasant colors on a dark background.")
 The theme has to be reloaded after changing anything in the faces group."
   :group 'faces)
 
-(eval-and-compile
-  (unless (and (fboundp 'require-theme)
-               load-file-name
-               (equal (file-name-directory load-file-name)
-                      (expand-file-name "themes/" data-directory))
-               (require-theme 'shanty-themes t))
-    (require 'shanty-themes)))
+(require 'shanty-themes)
 
 (shanty-themes--activate-theme 'shanty-themes-dark shanty-themes-colors)
 
