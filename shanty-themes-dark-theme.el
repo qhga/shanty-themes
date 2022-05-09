@@ -81,7 +81,6 @@ a screen full of pleasant colors on a dark background.")
 The theme has to be reloaded after changing anything in the faces group."
   :group 'faces)
 
-;;;###autoload
 (when load-file-name
   (load-file (concat (file-name-directory load-file-name) "shanty-themes.el")))
 
@@ -90,4 +89,7 @@ The theme has to be reloaded after changing anything in the faces group."
 (provide-theme 'shanty-themes-dark)
 (provide 'shanty-themes-dark-theme)
 
+;; Local variables:
+;; package-lint-main-file: "shanty-themes.el"
+;; end:
 ;;; shanty-themes-dark-theme.el ends here
