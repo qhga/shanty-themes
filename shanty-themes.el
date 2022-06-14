@@ -629,6 +629,11 @@ or 'shanty-dark"
      `(message-cited-text-3 ((t (:foreground ,yellow+1))))
      `(message-cited-text-4 ((t (:foreground ,orange))))
 
+     ;;;; ein (emacs ipython notebook)
+     `(ein:basecell-input-area-face ((t (:background ,bg-1))))
+     `(ein:basecell-input-prompt-face ((t (:background ,bg :foreground ,fg-2))))
+     `(ein:cell-output-area ((t (:background ,bg+1))))
+
      ;;;; stuff I am not sure what is does
      `(lv-separator ((t (:foreground ,fg-2))))
      `(match ((t (:background ,blue+1 :foreground ,bg))))
