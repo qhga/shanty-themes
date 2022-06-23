@@ -32,7 +32,8 @@ If the package didn't show up try `M-x` `package-refresh-contents`.
 Alternatively, one could either use straight to install the package:
 
 ```emacs-lisp
-(straight-use-package '(shanty-themes :host github :repo "qhga/shanty-themes"))
+(straight-use-package '(shanty-themes :host github :repo "qhga/shanty-themes")) ;; GITHUB
+(straight-use-package 'shanty-themes) ;; MELPA
 ```
 
 Or by manually adding `shanty-themes.el`, `shanty-themes-dark-theme.el` and
@@ -65,3 +66,58 @@ To load the theme automatically on startup add the following code to your init.e
 
 ![shanty light](assets/shanty-light.png)
 ![shanty light vector](assets/shanty-light-vector.png)
+
+## Configuration
+
+For now, there are not many configuration options available. If you have any suggestions,
+feel free to open an issue.
+
+```emacs-lisp
+(setq shanty-themes-function-box t) ;; Enable or disable the boxes around function definitions
+```
+
+## Officially Supported Modes
+
+The faces of the following modes have all been **manually** adjusted to fit the themes aesthetics.
+This does not mean, that other modes have to look ugly or weird, because a lot of modes inherit
+face attirbutes from more general definitios (e.g. comment-faces often inherit from `shadow`).
+
+- [x] Ansi-colors (Light Versions have to be set by the user to highlight *shell* buffers)
+- [x] Avy
+- [x] Ccls
+- [x] Company-mode
+- [x] Compilation
+- [x] Custom
+- [x] Diff
+- [x] Dired
+- [x] Ediff
+- [x] Ein (emacs ipython notebook)
+- [x] Evil-mode
+- [x] Flycheck
+- [x] General Programming
+- [x] Git-gutter / git-gutter-fringe
+- [x] Gnus
+- [x] Helm
+- [x] Info
+- [x] Ivy
+- [x] Linum
+- [x] Lsp-mode / lsp-ui
+- [x] Magit
+- [x] Marginalia-mode
+- [x] Markdown-mode
+- [x] Message-mode
+- [x] Minibuffer
+- [x] Mode-line
+- [x] Org-agenda
+- [x] Org-mode
+- [x] Outline
+- [x] Rainbow-delimiters
+- [x] Speedbar
+- [x] Straight
+- [x] Swiper
+- [x] Symbol-overlay
+- [x] Term-color
+- [x] Tty-menu
+- [x] Undo-tree
+- [x] Vertico-mode
+- [x] Xref

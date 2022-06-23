@@ -32,6 +32,12 @@
 
 ;;; Code:
 
+(defcustom shanty-themes-function-box t
+  "Draw a box around function definitions and in some cases calls.
+If non nil, draws the box."
+  :type 'boolean
+  :group 'shanty-themes)
+
 ;; So the doc can contain the quoted version
 (declare-function shanty-themes--li-da "shanty-themes")
 
@@ -127,11 +133,13 @@ or 'shanty-dark"
      `(font-lock-builtin-face ((t (:foreground ,yellow))))
      `(font-lock-variable-name-face ((t (:foreground ,purple+1))))
      `(font-lock-constant-face ((t (:foreground ,blue))))
-     `(font-lock-function-name-face ((t (:foreground ,blue ,@shanty-box))))
+     `(font-lock-function-name-face ((t (:foreground ,blue
+                                         ,@(when shanty-themes-function-box
+                                            shanty-box)))))
      `(font-lock-type-face ((t (:foreground ,blue))))
      `(font-lock-string-face ((t (:foreground ,green))))
      ;; `(font-negation-char-face ((t (:foreground ,green))))
-     `(trailing-whitespace ((t (:background ,red :foreground ,bg-2))))
+     `(trailing-whitespace ((t (:background ,red :foreground ,bg))))
      `(whitespace-trailing ((t (:inherit trailing-whitespace))))
      `(whitespace-line ((t (:foreground ,orange))))
      `(whitespace-indentation ((t (:foreground ,orange))))
@@ -143,10 +151,18 @@ or 'shanty-dark"
      `(whitespace-space ((t (:foreground ,fg-1))))
      `(whitespace-hspace ((t (:foreground ,orange))))
      `(whitespace-big-indent ((t (:foreground ,orange))))
+     `(whitespace-missing-newline-at-eof ((t (:background ,yellow :foreground ,bg))))
      `(sh-heredoc ((t (:foreground ,fg))))
 
      ;;;; compilation
      `(compilation-info ((t (:foreground ,blue+1))))
+     `(compilation-error ((t (:foreground ,red :weight bold))))
+     `(compilation-column-number ((t (:foreground ,magenta))))
+     `(compilation-line-number ((t (:foreground ,yellow :weight bold))))
+     `(compilation-mode-line-exit ((t (:foreground ,green :weight bold))))
+     `(compilation-mode-line-fail ((t (:foreground ,red :weight bold))))
+     `(compilation-mode-line-run ((t (:foreground ,yellow :weight bold))))
+     `(compilation-mode-line-warning ((t (:foreground ,orange :weight bold))))
 
      ;;;; evil-mode
      `(evil-ex-search ((t (:inherit isearch))))
@@ -180,8 +196,6 @@ or 'shanty-dark"
      `(mode-line-buffer-id ((t (:foreground ,yellow :weight bold))))
      `(mode-line-emphasis ((t (:foreground ,yellow :weight bold))))
      `(mode-line-highlight ((t (:foreground ,yellow :weight bold))))
-
-     ;;;; telephone-line
 
      ;;;; outline
      `(outline-1 ((t (:foreground ,yellow ,@shanty-heading))))
@@ -247,6 +261,8 @@ or 'shanty-dark"
      `(org-mode-line-clock ((t (:background ,bg-1 :foreground ,fg :weight bold))))
      `(org-mode-line-clock-overrun ((t (:background ,red :foreground ,bg :weight bold))))
 
+     `(org-dispatcher-highlight ((t (:foreground ,yellow :weight bold))))
+
      ;;;; org-agenda
      `(org-agenda-done ((t (:foreground ,green :weight bold))))
 
@@ -260,6 +276,11 @@ or 'shanty-dark"
      `(term-color-cyan ((t (:foreground ,blue+1))))
      `(term-color-white ((t (:foreground ,white))))
 
+     ;;;; tty-menu
+     `(tty-menu-disabled-face ((t (:inherit shadow))))
+     `(tty-menu-enabled-face ((t (:foreground ,green))))
+     `(tty-menu-selected-face ((t (:foreground ,blue))))
+
      ;;;; ansi-colors (Have to be set by the user to highlight *shell* buffers)
      `(ansi-color-black ((t (:foreground ,black))))
      `(ansi-color-red ((t (:foreground ,red))))
@@ -270,14 +291,14 @@ or 'shanty-dark"
      `(ansi-color-cyan ((t (:foreground ,blue+1))))
      `(ansi-color-white ((t (:foreground ,white))))
 
-     `(ansi-bright-color-black ((t (:foreground ,black))))
-     `(ansi-bright-color-red ((t (:foreground ,red+1))))
-     `(ansi-bright-color-green ((t (:foreground ,green+1))))
-     `(ansi-bright-color-yellow ((t (:foreground ,yellow+1))))
-     `(ansi-bright-color-blue ((t (:foreground ,blue+1))))
-     `(ansi-bright-color-magenta ((t (:foreground ,magenta+1))))
-     `(ansi-bright-color-cyan ((t (:foreground ,blue+1))))
-     `(ansi-bright-color-white ((t (:foreground ,white))))
+     `(ansi-color-bright-black ((t (:foreground ,black))))
+     `(ansi-color-bright-red ((t (:foreground ,red+1))))
+     `(ansi-color-bright-green ((t (:foreground ,green+1))))
+     `(ansi-color-bright-yellow ((t (:foreground ,yellow+1))))
+     `(ansi-color-bright-blue ((t (:foreground ,blue+1))))
+     `(ansi-color-bright-magenta ((t (:foreground ,magenta+1))))
+     `(ansi-color-bright-cyan ((t (:foreground ,blue+1))))
+     `(ansi-color-bright-white ((t (:foreground ,white))))
 
      ;;;; avy: works like face, face-0, face-2 (face-1 is not the 3rd column)
      `(avy-background-face ((t (:background ,bg+1 :foreground ,fg-1 :extend t))))
@@ -374,79 +395,79 @@ or 'shanty-dark"
      `(helm-M-x-key ((t (:foreground ,yellow :weight bold))))
      `(helm-action ((t (:foreground ,yellow :weight bold))))
      `(helm-candidate-number ((t (:foreground ,blue :weight bold))))
-     `(helm-candidate-number-suspended ((t :foreground ,orange)))
-     `(helm-header ((t :background ,bg-1 :foreground ,fg+1 :overline ,fg-2)))
-     `(helm-header-line-left-margin ((t :foreground ,yellow+1 :weight bold)))
+     `(helm-candidate-number-suspended ((t (:foreground ,orange))))
+     `(helm-header ((t (:background ,bg-1 :foreground ,fg+1 :overline ,fg-2))))
+     `(helm-header-line-left-margin ((t (:foreground ,yellow+1 :weight bold))))
      `(helm-source-header ((t (:background ,fg-2 :foreground ,fg+1 :weight bold
                                :height 1.3 :family "Sans Serif"))))
 
-     `(helm-bookmark-addressbook ((t :foreground ,green)))
-     `(helm-bookmark-directory ((t :foreground ,blue :weight bold)))
-     `(helm-bookmark-file ((t :foreground ,fg)))
-     `(helm-bookmark-file-not-found ((t :foreground ,red)))
-     `(helm-bookmark-gnus ((t :foreground ,purple+1)))
-     `(helm-bookmark-info ((t :foreground ,blue+1)))
-     `(helm-bookmark-man ((t :foreground ,yellow+1)))
-     `(helm-bookmark-w3m ((t :foreground ,blue+1)))
+     `(helm-bookmark-addressbook ((t (:foreground ,green))))
+     `(helm-bookmark-directory ((t (:foreground ,blue :weight bold))))
+     `(helm-bookmark-file ((t (:foreground ,fg))))
+     `(helm-bookmark-file-not-found ((t (:foreground ,red))))
+     `(helm-bookmark-gnus ((t (:foreground ,purple+1))))
+     `(helm-bookmark-info ((t (:foreground ,blue+1))))
+     `(helm-bookmark-man ((t (:foreground ,yellow+1))))
+     `(helm-bookmark-w3m ((t (:foreground ,blue+1))))
 
-     `(helm-buffer-archive ((t :foreground ,blue+1 :weight bold)))
-     `(helm-buffer-file ((t :foreground ,fg)))
-     `(helm-buffer-modified ((t :foreground ,yellow-1)))
-     `(helm-buffer-not-saved ((t :foreground ,red+1)))
-     `(helm-buffer-process ((t :foreground ,purple+1)))
-     `(helm-buffer-saved-out ((t :foreground ,red :weight bold)))
-     `(helm-buffer-size ((t :inherit shadow)))
-     `(helm-buffer-directory ((t :foreground ,blue :weight bold)))
+     `(helm-buffer-archive ((t (:foreground ,blue+1 :weight bold))))
+     `(helm-buffer-file ((t (:foreground ,fg))))
+     `(helm-buffer-modified ((t (:foreground ,yellow-1))))
+     `(helm-buffer-not-saved ((t (:foreground ,red+1))))
+     `(helm-buffer-process ((t (:foreground ,purple+1))))
+     `(helm-buffer-saved-out ((t (:foreground ,red :weight bold))))
+     `(helm-buffer-size ((t (:inherit shadow))))
+     `(helm-buffer-directory ((t (:foreground ,blue :weight bold))))
 
-     `(helm-comint-prompts-buffer-name ((t :foreground ,green)))
-     `(helm-comint-prompts-promptidx ((t :foreground ,blue+1)))
-     `(helm-delete-async-message ((t :foreground ,purple+1 :weight bold)))
-     `(helm-eob-line ((t :foreground ,fg)))
-     `(helm-eshell-prompts-buffer-name ((t :foreground ,green)))
-     `(helm-eshell-prompts-promptidx ((t :foreground ,blue+1)))
-     `(helm-etags-file ((t :foreground ,fg-1 :underline t)))
+     `(helm-comint-prompts-buffer-name ((t (:foreground ,green))))
+     `(helm-comint-prompts-promptidx ((t (:foreground ,blue+1))))
+     `(helm-delete-async-message ((t (:foreground ,purple+1 :weight bold))))
+     `(helm-eob-line ((t (:foreground ,fg))))
+     `(helm-eshell-prompts-buffer-name ((t (:foreground ,green))))
+     `(helm-eshell-prompts-promptidx ((t (:foreground ,blue+1))))
+     `(helm-etags-file ((t (:foreground ,fg-1 :underline t))))
 
-     `(helm-ff-file ((t :foreground ,fg)))
-     `(helm-ff-symlink ((t :foreground ,fg-1 :slant italic)))
-     `(helm-ff-truename ((t :foreground ,green)))
-     `(helm-ff-file-extension ((t :foreground ,fg)))
-     `(helm-ff-backup-file ((t :inherit shadow)))
-     `(helm-ff-denied ((t :foreground ,red)))
-     `(helm-ff-dirs ((t :foreground ,blue :weight bold)))
-     `(helm-ff-directory ((t :foreground ,blue :weight bold)))
-     `(helm-ff-dotted-directory ((t :foreground ,blue :weight bold)))
-     `(helm-ff-dotted-symlink-directory ((t :foreground ,fg-1 :slant italic)))
-     `(helm-ff-executable ((t :foreground ,fg)))
-     `(helm-ff-invalid-symlink ((t :inherit shadow :strike-through t)))
-     `(helm-ff-pipe ((t :foreground ,purple+1)))
-     `(helm-ff-prefix ((t :foreground ,purple+1)))
-     `(helm-ff-rsync-progress ((t :foreground ,red+1)))
-     `(helm-ff-socket ((t :foreground ,red+1)))
-     `(helm-ff-suid ((t :foreground ,red+1)))
+     `(helm-ff-file ((t (:foreground ,fg))))
+     `(helm-ff-symlink ((t (:foreground ,fg-1 :slant italic))))
+     `(helm-ff-truename ((t (:foreground ,green))))
+     `(helm-ff-file-extension ((t (:foreground ,fg))))
+     `(helm-ff-backup-file ((t (:inherit shadow))))
+     `(helm-ff-denied ((t (:foreground ,red))))
+     `(helm-ff-dirs ((t (:foreground ,blue :weight bold))))
+     `(helm-ff-directory ((t (:foreground ,blue :weight bold))))
+     `(helm-ff-dotted-directory ((t (:foreground ,blue :weight bold))))
+     `(helm-ff-dotted-symlink-directory ((t (:foreground ,fg-1 :slant italic))))
+     `(helm-ff-executable ((t (:foreground ,fg))))
+     `(helm-ff-invalid-symlink ((t (:inherit shadow :strike-through t))))
+     `(helm-ff-pipe ((t (:foreground ,purple+1))))
+     `(helm-ff-prefix ((t (:foreground ,purple+1))))
+     `(helm-ff-rsync-progress ((t (:foreground ,red+1))))
+     `(helm-ff-socket ((t (:foreground ,red+1))))
+     `(helm-ff-suid ((t (:foreground ,red+1))))
 
-     `(helm-fd-finish ((t :foreground ,green)))
-     `(helm-grep-cmd-line ((t :foreground ,yellow-1)))
-     `(helm-grep-file ((t :foreground ,fg :weight bold)))
-     `(helm-grep-finish ((t :foreground ,green)))
-     `(helm-grep-lineno ((t :foreground ,fg+1)))
-     `(helm-grep-match ((t :foreground ,magenta+1)))
-     `(helm-history-deleted ((t :foreground ,red+1)))
-     `(helm-history-remote ((t :foreground ,red+1)))
-     `(helm-lisp-completion-info ((t :inherit compilation-info)))
-     `(helm-lisp-show-completion ((t :foreground ,green+1)))
-     `(helm-locate-finish ((t :inherit success)))
-     `(helm-minibuffer-prompt ((t :foreground ,blue)))
-     `(helm-moccur-buffer ((t :foreground ,blue+1 :underline t)))
-     `(helm-mode-prefix ((t :foreground ,purple+1)))
-     `(helm-no-file-buffer-modified ((t :foreground ,orange)))
-     `(helm-non-file-buffer ((t :inherit shadow)))
-     `(helm-prefarg ((t :foreground ,green)))
-     `(helm-resume-need-update ((t :background ,red :foreground ,bg :weight bold)))
-     `(helm-selection-line ((t :inherit highlight)))
-     `(helm-separator ((t :foreground ,fg-1)))
-     `(helm-time-zone-current ((t :foreground ,green+1)))
-     `(helm-time-zone-home ((t :foreground ,purple+1)))
-     `(helm-visible-mark ((t :background ,green :foreground ,bg)))
+     `(helm-fd-finish ((t (:foreground ,green))))
+     `(helm-grep-cmd-line ((t (:foreground ,yellow-1))))
+     `(helm-grep-file ((t (:foreground ,fg :weight bold))))
+     `(helm-grep-finish ((t (:foreground ,green))))
+     `(helm-grep-lineno ((t (:foreground ,fg+1))))
+     `(helm-grep-match ((t (:foreground ,magenta+1))))
+     `(helm-history-deleted ((t (:foreground ,red+1))))
+     `(helm-history-remote ((t (:foreground ,red+1))))
+     `(helm-lisp-completion-info ((t (:inherit compilation-info))))
+     `(helm-lisp-show-completion ((t (:foreground ,green+1))))
+     `(helm-locate-finish ((t (:inherit success))))
+     `(helm-minibuffer-prompt ((t (:foreground ,blue))))
+     `(helm-moccur-buffer ((t (:foreground ,blue+1 :underline t))))
+     `(helm-mode-prefix ((t (:foreground ,purple+1))))
+     `(helm-no-file-buffer-modified ((t (:foreground ,orange))))
+     `(helm-non-file-buffer ((t (:inherit shadow))))
+     `(helm-prefarg ((t (:foreground ,green))))
+     `(helm-resume-need-update ((t (:background ,red :foreground ,bg :weight bold))))
+     `(helm-selection-line ((t (:inherit highlight))))
+     `(helm-separator ((t (:foreground ,fg-1))))
+     `(helm-time-zone-current ((t (:foreground ,green+1))))
+     `(helm-time-zone-home ((t (:foreground ,purple+1))))
+     `(helm-visible-mark ((t (:background ,green :foreground ,bg))))
 
      ;;;; vertico-mode
      `(vertico-current ((t (:background ,yellow+1 :foreground ,bg :weight bold))))
@@ -491,6 +512,18 @@ or 'shanty-dark"
      ;;;; xref
      `(xref-file-header ((t (:foreground ,green :weight bold))))
      `(xref-line-number ((t (:foreground ,yellow :weight bold))))
+
+     ;;;; ccls
+     `(ccls-tree-mouse-face ((t (:foreground ,green+1))))
+
+     ;;;; speedbar
+     `(speedbar-button-face ((t (:foreground ,green))))
+     `(speedbar-directory-face ((t (:foreground ,fg))))
+     `(speedbar-file-face ((t (:foreground ,blue))))
+     `(speedbar-highlight-face ((t (:background ,green :foreground ,bg))))
+     `(speedbar-selected-face ((t (:foreground ,yellow))))
+     `(speedbar-separator-face ((t (:background ,blue :foreground ,bg :weight bold))))
+     `(speedbar-tag-face ((t (:foreground ,magenta+1 :weight bold))))
 
      ;;;; diff
      `(diff-added ((t (:background ,green+1 :foreground ,bg))))
@@ -633,6 +666,11 @@ or 'shanty-dark"
      `(ein:basecell-input-area-face ((t (:background ,bg-1))))
      `(ein:basecell-input-prompt-face ((t (:background ,bg :foreground ,fg-2))))
      `(ein:cell-output-area ((t (:background ,bg+1))))
+
+     ;;;; straight
+     `(straight-process-command ((t (:foreground ,fg :weight bold))))
+     `(straight-process-error ((t (:foreground ,red :weight bold))))
+
 
      ;;;; stuff I am not sure what is does
      `(lv-separator ((t (:foreground ,fg-2))))
