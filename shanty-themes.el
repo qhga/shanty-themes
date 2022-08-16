@@ -7,7 +7,7 @@
 ;; Created: 2022-02-07
 ;; URL: https://github.com/qhga/shanty-themes
 ;; Version: 1.0
-;; Package-Requires: ((emacs "27.2"))
+;; Package-Requires: ((emacs "24.5.1"))
 ;; Keywords: faces, theme, blue, yellow, gold, dark, light
 
 ;; This program is free software; you can redistribute it and/or modify

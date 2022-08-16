@@ -80,7 +80,7 @@ feel free to open an issue.
 
 The faces of the following modes have all been **manually** adjusted to fit the themes aesthetics.
 This does not mean, that other modes have to look ugly or weird, because a lot of modes inherit
-face attirbutes from more general definitios (e.g. comment-faces often inherit from `shadow`).
+face attributes from more general definitions (e.g. comment-like-faces often inherit from `shadow`).
 
 - [x] Ansi-colors (Light Versions have to be set by the user to highlight *shell* buffers)
 - [x] Avy
