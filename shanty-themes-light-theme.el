@@ -57,7 +57,7 @@
           green-1    "#A5CC69"
           green      "#739F2F"
           green+1    "#5E8520"
-          green+2    "#4E7118"
+          ;; green+2    "#4E7118"
           ;; blue-2     "#0683A0"
           blue-1     "#64BFD6"
           blue       "#36A1BB"
