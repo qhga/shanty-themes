@@ -671,6 +671,9 @@ or 'shanty-dark"
      `(straight-process-command ((t (:foreground ,fg :weight bold))))
      `(straight-process-error ((t (:foreground ,red :weight bold))))
 
+     ;; fic-mode
+     `(fic-face ((t (:foreground ,red+1))))
+     `(fic-author-face ((t (:foreground ,orange+1))))
 
      ;;;; stuff I am not sure what is does
      `(lv-separator ((t (:foreground ,fg-2))))
