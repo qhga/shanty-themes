@@ -154,6 +154,16 @@ or 'shanty-dark"
      `(whitespace-missing-newline-at-eof ((t (:background ,yellow :foreground ,bg))))
      `(sh-heredoc ((t (:foreground ,fg))))
 
+     ;;;; tree-sitter
+     `(tree-sitter-hl-face:function ((t (:foreground ,blue
+                                         ,@(when shanty-themes-function-box
+                                            shanty-box)))))
+     `(tree-sitter-hl-face:function.call ((t (:foreground ,blue))))
+     `(tree-sitter-hl-face:method ((t (:foreground ,blue
+                                         ,@(when shanty-themes-function-box
+                                            shanty-box)))))
+     `(tree-sitter-hl-face:method.call ((t (:foreground ,blue))))
+
      ;;;; compilation
      `(compilation-info ((t (:foreground ,blue+1))))
      `(compilation-error ((t (:foreground ,red :weight bold))))
